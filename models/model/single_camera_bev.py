@@ -1,3 +1,6 @@
+import os
+import warnings
+
 import torch
 import torchvision as tv
 from torch import nn
@@ -279,6 +282,29 @@ class Residual(nn.Module):
         out += identity
         return self.relu(out)
 
+
+def build_resnet34_backbone(pretrained=True, pretrained_path=None):
+    try:
+        if pretrained and pretrained_path:
+            model = tv.models.resnet34(weights=None) if hasattr(tv.models, "ResNet34_Weights") else tv.models.resnet34(pretrained=False)
+            state_dict = torch.load(pretrained_path, map_location="cpu")
+            model.load_state_dict(state_dict)
+            print(f"Loaded local ResNet34 pretrained backbone from {pretrained_path}")
+            return model
+        if hasattr(tv.models, "ResNet34_Weights"):
+            weights = tv.models.ResNet34_Weights.DEFAULT if pretrained else None
+            return tv.models.resnet34(weights=weights)
+        return tv.models.resnet34(pretrained=pretrained)
+    except Exception as exc:
+        if not pretrained:
+            raise
+        warnings.warn(
+            f"Failed to load pretrained ResNet34 weights ({exc}). Falling back to random initialization."
+        )
+        if hasattr(tv.models, "ResNet34_Weights"):
+            return tv.models.resnet34(weights=None)
+        return tv.models.resnet34(pretrained=False)
+
 # model
 # ResNet34 骨干网络 (self.bb)，在 ImageNet 上进行预训练。
 # 一个下采样层 (self.down)，用于减小特征图的空间维度。
@@ -286,9 +312,22 @@ class Residual(nn.Module):
 # 车道线检测头 (self.lane_head)，以 BEV 表示作为输入，输出表示检测到的车道线的张量。
 # 可选的 2D 图像车道线检测头 (self.lane_head_2d)，以 ResNet 骨干网络的输出作为输入，输出表示原始图像中检测到的车道线的张量。
 class BEV_LaneDet(nn.Module):  # BEV-LaneDet
-    def __init__(self, bev_shape, output_2d_shape, train=True):
+    def __init__(self, bev_shape, output_2d_shape, train=True, pretrained_backbone=True, pretrained_backbone_path=None):
         super(BEV_LaneDet, self).__init__()
-        self.bb = nn.Sequential(*list(tv.models.resnet34(pretrained=True).children())[:-2])
+        if pretrained_backbone_path and not os.path.isfile(pretrained_backbone_path):
+            warnings.warn(
+                f"Configured pretrained backbone path does not exist: {pretrained_backbone_path}. "
+                "Falling back to torchvision defaults."
+            )
+            pretrained_backbone_path = None
+        self.bb = nn.Sequential(
+            *list(
+                build_resnet34_backbone(
+                    pretrained=pretrained_backbone,
+                    pretrained_path=pretrained_backbone_path,
+                ).children()
+            )[:-2]
+        )
 
         self.down = naive_init_module(
             Residual(

@@ -1,0 +1,49 @@
+• 已经加上了，train_once.py 现在同时支持：
+
+  1. 训练过程中按 epoch 自动跑 val + once_3dlanes_benchmark
+  2. torchrun 多卡 DDP 训练
+
+  关键位置在 tools/train_once.py:66、tools/train_once.py:115、tools/train_once.py:323。默认配置
+  里我把 val_every_epochs 设成了 1，也就是每个 epoch 结束后都会在主进程上跑一次验证，见 tools/
+  once_config.py:61。验证逻辑被抽成了可复用的 run_validation()，在 tools/val_once.py:131。
+
+  现在的用法：
+
+  单卡或单进程：
+
+  python tools/train_once.py --config tools/once_config.py --gpus 0
+
+  多卡 DDP：
+
+  CUDA_VISIBLE_DEVICES=0,1,2,3 \
+  torchrun --standalone --nproc_per_node=4 tools/train_once.py --config tools/once_config.py
+
+  几个实用开关：
+
+  --val-every 0
+
+  关闭训练中验证。
+
+  --val-max-samples 100 --skip-val-eval
+
+  只做小规模预测 smoke test，不跑 benchmark 打分。
+
+  --batch-size 8
+
+  这里在 DDP 下是“每卡 batch size”，总 batch size 会变成 8 x 卡数。
+
+  我已经实际验证过：
+
+  - train_once.py 单进程可正常启动
+  - val_once.py 复用后的验证链路可正常跑通并落预测
+
+  torchrun 的双进程空跑在当前 sandbox 里被本地 rendezvous 端口限制卡住了，不是脚本语法或导入错
+  误；真实机器上按上面的 torchrun 命令跑即可。如果你要，我下一步可以继续给它加上“按验证结果自动
+  保存 best checkpoint”。
+
+
++---------------------+-----------------+-------------------+-----------------+----------------------+
+|     prob_thresh     |        F1       |     precision     |      recall     |       D error        |
++---------------------+-----------------+-------------------+-----------------+----------------------+
+|         0.1         |    0.7490393    |     0.76225555    |    0.7362734    |      0.07472215      |
+|         0.15        |    0.7490393    |     0.76225555    |    0.7362734    |      0.07472215      |

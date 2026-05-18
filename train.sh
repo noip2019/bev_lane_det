@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --standalone --nproc_per_node=4 tools/train_once.py --config tools/once_config.py
