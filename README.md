@@ -90,6 +90,21 @@ python tools/eval_once_with_ratio.py \
     --ratio-th 0.6
 ```
 
+### Sequence-split training/testing
+- A new split-based setup is available without changing the original labels. It uses sequence ids extracted from:
+  - `BEVLaneDetCopy_toPKU/data/split_train_with_height_pitch_by_sequence_9.json`
+  - `BEVLaneDetCopy_toPKU/data/split_test_with_height_pitch_by_sequence_1.json`
+- Train with the new config and script:
+```
+bash train_once_sequence_split.sh
+```
+- Test with the new script:
+```
+bash test_once_sequence_split.sh /path/to/checkpoint.pth
+```
+- This split uses the same ONCE annotations, but filters samples by sequence. Training-time validation only runs `val_offical` with `ratio_th=0.6`; the ONCE official benchmark evaluation is skipped.
+- You can still override dataset roots and image roots with `ONCE_3DLANES_ROOT`, `ONCE_3DLANES_TRAIN_IMAGE_ROOT`, and `ONCE_3DLANES_VAL_IMAGE_ROOT`.
+
 ## <span id="benchmark">Benchmark</span>
 
 ### Results of different models on OpenLane dataset

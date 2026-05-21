@@ -18,6 +18,7 @@ if REPO_ROOT not in sys.path:
     sys.path.insert(0, REPO_ROOT)
 
 from models.loss import IoULoss, NDPushPullLoss
+from tools.eval_once_with_ratio import evaluate_once
 from models.util.load_model import load_model
 from tools.val_once import run_validation
 from utils.config_util import load_config_module
@@ -77,7 +78,7 @@ def parse_args():
     parser.add_argument("--val-batch-size", type=int, default=None)
     parser.add_argument("--val-num-workers", type=int, default=None)
     parser.add_argument("--val-max-samples", type=int, default=None, help="Debug option to limit validation samples")
-    parser.add_argument("--skip-val-eval", action="store_true", help="Skip benchmark scoring and only dump predictions")
+    parser.add_argument("--skip-val-eval", action="store_true", help="Skip validation scoring and only dump predictions")
     parser.add_argument("--post-conf", type=float, default=None)
     parser.add_argument("--post-emb-margin", type=float, default=None)
     parser.add_argument("--post-min-cluster-size", type=int, default=None)
@@ -305,7 +306,14 @@ def main():
 
     val_every = args.val_every if args.val_every is not None else getattr(configs, "val_every_epochs", 0)
     val_max_samples = args.val_max_samples if args.val_max_samples is not None else getattr(configs, "val_max_samples", None)
-    skip_val_eval = args.skip_val_eval or getattr(configs, "val_skip_benchmark", False)
+    val_eval_mode = getattr(configs, "val_eval_mode", "once_benchmark")
+    val_ratio_th = getattr(configs, "val_ratio_th", None)
+    val_dist_th = getattr(configs, "val_dist_th", None)
+    skip_val_eval = (
+        args.skip_val_eval
+        or getattr(configs, "val_skip_benchmark", False)
+        or val_eval_mode == "val_offical"
+    )
 
     base_model = configs.model(train=True)
     model = CombineModelAndLoss(base_model).to(device)
@@ -401,6 +409,21 @@ def main():
                         device=device,
                         desc=f"val epoch {epoch}",
                     )
+                    if val_eval_mode == "val_offical" and not args.skip_val_eval:
+                        if val_max_samples is not None:
+                            raise RuntimeError(
+                                "val_offical evaluation requires full validation coverage. "
+                                "Remove --val-max-samples or pass --skip-val-eval."
+                            )
+                        main_print(f"Running val_offical evaluation for epoch {epoch} ratio_th={val_ratio_th}")
+                        metrics = evaluate_once(
+                            gt_root=configs.val_gt_root,
+                            pred_root=pred_root,
+                            ratio_th=val_ratio_th,
+                            dist_th=val_dist_th,
+                            index_file=getattr(configs, "val_index_file", None),
+                        )
+                        main_print(f"val_offical metrics: {metrics}")
                 if distributed:
                     dist.barrier()
     finally:

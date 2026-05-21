@@ -71,7 +71,42 @@ def _load_pred_lanes(pred_path):
     return lanes
 
 
-def evaluate_once(gt_root, pred_root, ratio_th=None, dist_th=None):
+def _collect_gt_files(gt_root, index_file=None):
+    gt_root = Path(gt_root)
+    if index_file is None:
+        gt_files = sorted(gt_root.glob("*/*/*.json"))
+        if not gt_files:
+            raise RuntimeError(f"No GT json files found under {gt_root}")
+        return gt_files
+
+    index_file = Path(index_file)
+    if not index_file.is_file():
+        raise FileNotFoundError(f"Index file not found: {index_file}")
+
+    gt_files = []
+    missing_gt = []
+    with index_file.open("r", encoding="utf-8") as handle:
+        for line in handle:
+            rel_path = line.strip().lstrip("/")
+            if not rel_path or not rel_path.endswith(".jpg"):
+                continue
+            sequence, camera, image_name = rel_path.split("/")
+            gt_path = gt_root / sequence / camera / image_name.replace(".jpg", ".json")
+            if gt_path.is_file():
+                gt_files.append(gt_path)
+            else:
+                missing_gt.append(str(gt_path.relative_to(gt_root)))
+
+    if missing_gt:
+        raise RuntimeError(
+            f"Missing {len(missing_gt)} GT json files under {gt_root}. Examples: {missing_gt[:5]}"
+        )
+    if not gt_files:
+        raise RuntimeError(f"No GT json files were resolved from index file {index_file}")
+    return gt_files
+
+
+def evaluate_once(gt_root, pred_root, ratio_th=None, dist_th=None, index_file=None):
     gt_root = Path(gt_root)
     pred_root = Path(pred_root)
     evaluator = LaneEval()
@@ -80,9 +115,7 @@ def evaluate_once(gt_root, pred_root, ratio_th=None, dist_th=None):
     if dist_th is not None:
         evaluator.dist_th = float(dist_th)
 
-    gt_files = sorted(gt_root.glob("*/*/*.json"))
-    if not gt_files:
-        raise RuntimeError(f"No GT json files found under {gt_root}")
+    gt_files = _collect_gt_files(gt_root, index_file=index_file)
 
     missing_predictions = []
     for gt_path in tqdm(gt_files, desc=f"ratio@{evaluator.ratio_th}"):
@@ -115,6 +148,7 @@ def main():
     )
     parser.add_argument("--gt-root", default=os.path.join("data", "ONCE-3DLanes", "val"))
     parser.add_argument("--pred-root", required=True)
+    parser.add_argument("--index-file", default=None, help="Optional split index file to restrict evaluation scope.")
     parser.add_argument(
         "--benchmark-cfg",
         default=os.path.join("thirdparty", "once_3dlanes_benchmark", "cfg", "eval.json"),
@@ -149,7 +183,13 @@ def main():
 
     if not args.skip_ratio_metric:
         print("=== val_offical ratio metric ===")
-        evaluate_once(gt_root, pred_root, ratio_th=args.ratio_th, dist_th=args.dist_th)
+        evaluate_once(
+            gt_root,
+            pred_root,
+            ratio_th=args.ratio_th,
+            dist_th=args.dist_th,
+            index_file=args.index_file,
+        )
 
     # if not args.skip_once_benchmark:
     #     print("=== ONCE official benchmark ===")
