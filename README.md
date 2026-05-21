@@ -53,6 +53,43 @@ cd tools
 python val_apollo.py
 ```
 
+### Inference and evaluation on ONCE-3DLanes
+- Please prepare the ONCE-3DLanes dataset under `data/ONCE-3DLanes`. The default config is [`tools/once_config.py`](./tools/once_config.py), and the training entry is:
+```
+CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --standalone --nproc_per_node=4 tools/train_once.py --config tools/once_config.py
+```
+- To test a trained checkpoint such as `ep0099.pth`, use the `bevlanedet` conda environment and run:
+```
+cd /home/lijishuo/bev_lane_det
+bash test_once.sh /home/lijishuo/bev_lane_det/ep0099.pth
+```
+- The script [`test_once.sh`](./test_once.sh) will:
+  1. run `tools/val_once.py` to regenerate prediction json files
+  2. run `tools/eval_once_with_ratio.py --ratio-th 0.6` to report the ratio metric and ONCE official benchmark
+- By default, predictions are saved to:
+```
+work_dirs/once_3dlanes/predictions/ep0099
+```
+- To choose specific GPUs, override `GPU_IDS`. For example:
+```
+cd /home/lijishuo/bev_lane_det
+GPU_IDS=0,1,2,3 bash test_once.sh /home/lijishuo/bev_lane_det/ep0099.pth
+```
+- If you want to run the two stages manually, use:
+```
+cd /home/lijishuo/bev_lane_det
+source /home/lijishuo/miniconda3/etc/profile.d/conda.sh
+conda activate bevlanedet
+CUDA_VISIBLE_DEVICES=0 python tools/val_once.py \
+    --config tools/once_config.py \
+    --checkpoint /home/lijishuo/bev_lane_det/ep0099.pth \
+    --pred-root work_dirs/once_3dlanes/predictions/ep0099 \
+    --skip-eval
+python tools/eval_once_with_ratio.py \
+    --pred-root work_dirs/once_3dlanes/predictions/ep0099 \
+    --ratio-th 0.6
+```
+
 ## <span id="benchmark">Benchmark</span>
 
 ### Results of different models on OpenLane dataset

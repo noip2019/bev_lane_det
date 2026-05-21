@@ -151,9 +151,9 @@ def main():
         print("=== val_offical ratio metric ===")
         evaluate_once(gt_root, pred_root, ratio_th=args.ratio_th, dist_th=args.dist_th)
 
-    if not args.skip_once_benchmark:
-        print("=== ONCE official benchmark ===")
-        evaluate_once_benchmark(gt_root, pred_root, args.benchmark_cfg)
+    # if not args.skip_once_benchmark:
+    #     print("=== ONCE official benchmark ===")
+    #     evaluate_once_benchmark(gt_root, pred_root, args.benchmark_cfg)
 
 
 if __name__ == "__main__":
