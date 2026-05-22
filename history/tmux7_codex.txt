@@ -1,0 +1,8 @@
+2026-05-22 Codex session log
+
+1. Added ONCE Anchor3DLane++ sequence-split training/testing support in Anchor3DLane.
+2. Added original-split val_official training/testing support.
+3. Added inference hyperparameter sweep for a single checkpoint.
+4. Updated README with usage for original split, sequence split, and sweep commands.
+5. Fixed validation GT generation and ONCE coordinate conversion issues.
+6. Confirmed ratio_th/dist_th remain unchanged at 0.6/1.5 in val_official workflows.

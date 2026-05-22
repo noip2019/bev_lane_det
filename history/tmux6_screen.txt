@@ -1,0 +1,557 @@
+(base) lijishuo@VDIG222:~$ GPU_IDS=1,2,3,4,5,6,7 \
+> NPROC_PER_NODE=7 \
+> bash train_once_sequence_split.sh
+bash: train_once_sequence_split.sh: No such file or directory
+(base) lijishuo@VDIG222:~$ cd bev_lane_det/
+(base) lijishuo@VDIG222:~/bev_lane_det$ conda activate bevlanedet
+(bevlanedet) lijishuo@VDIG222:~/bev_lane_det$ GPU_IDS=1,2,3,4,5,6,6 NPROC_PER_NODE=6 bash train_once_anchor3dlane_r50x2.sh
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please furthe
+r tune the variable for optimal performance in your application as needed.
+*****************************************
+/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/cuda/__init__.py:80: UserWarning: CUDA initialization: Une
+xpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set a
+n error? Error 101: invalid device ordinal (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:112.)
+  return torch._C._cuda_getDeviceCount() > 0
+/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/cuda/__init__.py:80: UserWarning: CUDA initialization: Une
+xpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set a
+n error? Error 101: invalid device ordinal (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:112.)
+  return torch._C._cuda_getDeviceCount() > 0
+/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/cuda/__init__.py:80: UserWarning: CUDA initialization: Une
+xpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set a
+n error? Error 101: invalid device ordinal (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:112.)
+  return torch._C._cuda_getDeviceCount() > 0
+/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/cuda/__init__.py:80: UserWarning: CUDA initialization: Une
+xpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set a
+n error? Error 101: invalid device ordinal (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:112.)
+  return torch._C._cuda_getDeviceCount() > 0
+/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/cuda/__init__.py:80: UserWarning: CUDA initialization: Une
+xpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set a
+n error? Error 101: invalid device ordinal (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:112.)
+  return torch._C._cuda_getDeviceCount() > 0
+/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/cuda/__init__.py:80: UserWarning: CUDA initialization: Une
+xpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set a
+n error? Error 101: invalid device ordinal (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:112.)
+  return torch._C._cuda_getDeviceCount() > 0
+Initialized DDP: rank=0 world_size=6 backend=gloo
+Loaded backbone from /home/lijishuo/Anchor3DLane/ckpt/once_anchor3dlane++_r50x2(1).pth: matched=330 missing=0 unexpected=0
+Loaded backbone from /home/lijishuo/Anchor3DLane/ckpt/once_anchor3dlane++_r50x2(1).pth: matched=330 missing=0 unexpected=0
+Loaded backbone from /home/lijishuo/Anchor3DLane/ckpt/once_anchor3dlane++_r50x2(1).pth: matched=330 missing=0 unexpected=0
+Loaded backbone from /home/lijishuo/Anchor3DLane/ckpt/once_anchor3dlane++_r50x2(1).pth: matched=330 missing=0 unexpected=0
+Loaded backbone from /home/lijishuo/Anchor3DLane/ckpt/once_anchor3dlane++_r50x2(1).pth: matched=330 missing=0 unexpected=0
+Loaded backbone from /home/lijishuo/Anchor3DLane/ckpt/once_anchor3dlane++_r50x2(1).pth: matched=330 missing=0 unexpected=0
+[ONCE3DLanesDatasetWithOffset] Skipped 4 invalid label files. Examples: /home/lijishuo/bev_lane_det/data/ONCE-3DLanes/train/000187/cam
+01/1618776914500.json (empty JSON file); /home/lijishuo/bev_lane_det/data/ONCE-3DLanes/train/000473/cam01/1619801784499.json (empty JS
+ON file); /home/lijishuo/bev_lane_det/data/ONCE-3DLanes/train/000528/cam01/1619977228700.json (empty JSON file); /home/lijishuo/bev_la
+ne_det/data/ONCE-3DLanes/train/000567/cam01/1620681012299.json (empty JSON file)
+Training setup: device=cpu world_size=6 train_samples=201852 per_rank_batch_size=4 global_batch_size=24 iters_per_epoch=8411 start_epo
+ch=0 val_every=1
+**************************************** epoch 0/59 iters=8411
+Traceback (most recent call last):
+  File "tools/train_once.py", line 457, in <module>
+    main()
+  File "tools/train_once.py", line 387, in main
+    train_epoch(
+  File "tools/train_once.py", line 235, in train_epoch
+    prediction, loss_bev, loss_2d, loss_offset, loss_height = model(
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/nn/parallel/distributed.py", line 873, in forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your mod
+ule has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `fi
+nd_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by
+making sure all `forward` function outputs participate in calculating loss.
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return v
+alue of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your
+module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 4: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73
+ 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 ...
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about whi
+ch particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "tools/train_once.py", line 457, in <module>
+    main()
+  File "tools/train_once.py", line 387, in main
+    train_epoch(
+  File "tools/train_once.py", line 235, in train_epoch
+    prediction, loss_bev, loss_2d, loss_offset, loss_height = model(
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/nn/parallel/distributed.py", line 873, in forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your mod
+ule has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `fi
+nd_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by
+making sure all `forward` function outputs participate in calculating loss.
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return v
+alue of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your
+module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 3: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73
+ 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 ...
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about whi
+ch particular parameters did not receive gradient on this rank as part of this error
+epoch=0 iter=0 bev=24.4160 offset=11.8271 height=149.3724 iter_time=22.80s avg_iter_time=22.80s epoch_eta=53:16:03 total_eta=3196:37:4
+1
+{'epoch': 0, 'iter': 0, 'BEV Loss': 24.415966033935547, 'offset loss': 11.827101707458496, 'height loss': 149.37240600585938, 'F1_BEV_
+seg': 0.11388250738431244, 'avg_iter_time_sec': 22.802, 'epoch_eta': '53:16:03', 'total_eta': '3196:37:41'}
+Traceback (most recent call last):
+  File "tools/train_once.py", line 457, in <module>
+    main()
+  File "tools/train_once.py", line 387, in main
+    train_epoch(
+  File "tools/train_once.py", line 235, in train_epoch
+    prediction, loss_bev, loss_2d, loss_offset, loss_height = model(
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/nn/parallel/distributed.py", line 873, in forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your mod
+ule has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `fi
+nd_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by
+making sure all `forward` function outputs participate in calculating loss.
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return v
+alue of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your
+module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 5: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73
+ 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 ...
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about whi
+ch particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "tools/train_once.py", line 457, in <module>
+    main()
+  File "tools/train_once.py", line 387, in main
+    train_epoch(
+  File "tools/train_once.py", line 235, in train_epoch
+    prediction, loss_bev, loss_2d, loss_offset, loss_height = model(
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/nn/parallel/distributed.py", line 873, in forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your mod
+ule has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `fi
+nd_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by
+making sure all `forward` function outputs participate in calculating loss.
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return v
+alue of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your
+module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 2: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73
+ 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 ...
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about whi
+ch particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "tools/train_once.py", line 457, in <module>
+    main()
+  File "tools/train_once.py", line 387, in main
+    train_epoch(
+  File "tools/train_once.py", line 235, in train_epoch
+    prediction, loss_bev, loss_2d, loss_offset, loss_height = model(
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/nn/parallel/distributed.py", line 873, in forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your mod
+ule has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `fi
+nd_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by
+making sure all `forward` function outputs participate in calculating loss.
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return v
+alue of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your
+module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 0: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73
+ 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 ...
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about whi
+ch particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "tools/train_once.py", line 457, in <module>
+    main()
+  File "tools/train_once.py", line 387, in main
+    train_epoch(
+  File "tools/train_once.py", line 235, in train_epoch
+    prediction, loss_bev, loss_2d, loss_offset, loss_height = model(
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/nn/parallel/distributed.py", line 873, in forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your mod
+ule has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `fi
+nd_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by
+making sure all `forward` function outputs participate in calculating loss.
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return v
+alue of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your
+module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 1: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73
+ 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 ...
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about whi
+ch particular parameters did not receive gradient on this rank as part of this error
+WARNING:torch.distributed.elastic.multiprocessing.api:Sending process 2416293 closing signal SIGTERM
+ERROR:torch.distributed.elastic.multiprocessing.api:failed (exitcode: 1) local_rank: 0 (pid: 2416292) of binary: /home/lijishuo/minico
+nda3/envs/bevlanedet/bin/python
+Traceback (most recent call last):
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/distributed/elastic/multiprocessing/errors/__init_
+_.py", line 345, in wrapper
+    return f(*args, **kwargs)
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/distributed/run.py", line 719, in main
+    run(args)
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/distributed/run.py", line 710, in run
+    elastic_launch(
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/distributed/launcher/api.py", line 131, in __call_
+_
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/distributed/launcher/api.py", line 259, in launch_
+agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError:
+============================================================
+tools/train_once.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2026-05-21_08:45:53
+  host      : VDIG222
+  rank      : 2 (local_rank: 2)
+  exitcode  : 1 (pid: 2416294)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2026-05-21_08:45:53
+  host      : VDIG222
+  rank      : 3 (local_rank: 3)
+  exitcode  : 1 (pid: 2416295)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[3]:
+  time      : 2026-05-21_08:45:53
+  host      : VDIG222
+  rank      : 4 (local_rank: 4)
+  exitcode  : 1 (pid: 2416296)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[4]:
+  time      : 2026-05-21_08:45:53
+  host      : VDIG222
+  rank      : 5 (local_rank: 5)
+  exitcode  : 1 (pid: 2416297)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-05-21_08:45:53
+  host      : VDIG222
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 2416292)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+(bevlanedet) lijishuo@VDIG222:~/bev_lane_det$ GPU_IDS=1,2,3,4,5,6,6 NPROC_PER_NODE=6 bash train_once_anchor3dlane_r50x2.sh^C
+(bevlanedet) lijishuo@VDIG222:~/bev_lane_det$ GPU_IDS=1,2,3,4,5,6 NPROC_PER_NODE=6 bash train_once_anchor3dlane_r50x2.sh
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please furthe
+r tune the variable for optimal performance in your application as needed.
+*****************************************
+Initialized DDP: rank=0 world_size=6 backend=nccl
+Loaded backbone from /home/lijishuo/Anchor3DLane/ckpt/once_anchor3dlane++_r50x2(1).pth: matched=330 missing=0 unexpected=0
+Loaded backbone from /home/lijishuo/Anchor3DLane/ckpt/once_anchor3dlane++_r50x2(1).pth: matched=330 missing=0 unexpected=0
+Loaded backbone from /home/lijishuo/Anchor3DLane/ckpt/once_anchor3dlane++_r50x2(1).pth: matched=330 missing=0 unexpected=0
+Loaded backbone from /home/lijishuo/Anchor3DLane/ckpt/once_anchor3dlane++_r50x2(1).pth: matched=330 missing=0 unexpected=0
+Loaded backbone from /home/lijishuo/Anchor3DLane/ckpt/once_anchor3dlane++_r50x2(1).pth: matched=330 missing=0 unexpected=0
+Loaded backbone from /home/lijishuo/Anchor3DLane/ckpt/once_anchor3dlane++_r50x2(1).pth: matched=330 missing=0 unexpected=0
+[ONCE3DLanesDatasetWithOffset] Skipped 4 invalid label files. Examples: /home/lijishuo/bev_lane_det/data/ONCE-3DLanes/train/000187/cam
+01/1618776914500.json (empty JSON file); /home/lijishuo/bev_lane_det/data/ONCE-3DLanes/train/000473/cam01/1619801784499.json (empty JS
+ON file); /home/lijishuo/bev_lane_det/data/ONCE-3DLanes/train/000528/cam01/1619977228700.json (empty JSON file); /home/lijishuo/bev_la
+ne_det/data/ONCE-3DLanes/train/000567/cam01/1620681012299.json (empty JSON file)
+Training setup: device=cuda:0 world_size=6 train_samples=189174 per_rank_batch_size=4 global_batch_size=24 iters_per_epoch=7883 start_
+epoch=0 val_every=1
+**************************************** epoch 0/59 iters=7883
+epoch=0 iter=0 bev=21.7034 offset=3.3134 height=39.4976 iter_time=41.70s avg_iter_time=41.70s epoch_eta=91:18:08 total_eta=5478:59:42
+{'epoch': 0, 'iter': 0, 'BEV Loss': 21.703380584716797, 'offset loss': 3.313403844833374, 'height loss': 39.497589111328125, 'F1_BEV_s
+eg': 0.04566381659306586, 'avg_iter_time_sec': 41.701, 'epoch_eta': '91:18:08', 'total_eta': '5478:59:42'}
+epoch=0 iter=50 bev=4.6880 offset=0.9320 height=0.0642 iter_time=0.69s avg_iter_time=1.65s epoch_eta=03:34:49 total_eta=216:12:10
+epoch=0 iter=100 bev=5.3166 offset=2.1700 height=0.0818 iter_time=0.62s avg_iter_time=1.16s epoch_eta=02:30:50 total_eta=152:45:35
+epoch=0 iter=150 bev=5.2787 offset=1.2919 height=0.0515 iter_time=1.16s avg_iter_time=1.01s epoch_eta=02:09:50 total_eta=132:19:18
+epoch=0 iter=200 bev=7.5003 offset=0.8491 height=0.0124 iter_time=0.80s avg_iter_time=0.94s epoch_eta=02:00:48 total_eta=123:54:33
+epoch=0 iter=250 bev=5.2793 offset=2.2196 height=0.0620 iter_time=0.99s avg_iter_time=0.89s epoch_eta=01:53:13 total_eta=116:53:08
+epoch=0 iter=300 bev=6.3260 offset=1.6548 height=0.0346 iter_time=1.03s avg_iter_time=0.86s epoch_eta=01:48:32 total_eta=112:46:05
+{'epoch': 0, 'iter': 300, 'BEV Loss': 6.325990676879883, 'offset loss': 1.6547625064849854, 'height loss': 0.03457653895020485, 'F1_BE
+V_seg': 0.28719723183391005, 'avg_iter_time_sec': 0.859, 'epoch_eta': '01:48:32', 'total_eta': '112:46:05'}
+epoch=0 iter=350 bev=7.2559 offset=3.1173 height=0.0778 iter_time=0.81s avg_iter_time=0.83s epoch_eta=01:44:22 total_eta=109:08:35
+epoch=0 iter=400 bev=5.5175 offset=2.3177 height=0.0536 iter_time=0.61s avg_iter_time=0.79s epoch_eta=01:38:58 total_eta=104:10:34
+epoch=0 iter=450 bev=4.8853 offset=1.8077 height=0.0368 iter_time=0.48s avg_iter_time=0.77s epoch_eta=01:34:57 total_eta=100:37:26
+epoch=0 iter=500 bev=4.9585 offset=1.6447 height=0.0397 iter_time=0.34s avg_iter_time=0.75s epoch_eta=01:31:48 total_eta=97:55:27
+epoch=0 iter=550 bev=4.0517 offset=1.2476 height=0.0268 iter_time=0.61s avg_iter_time=0.74s epoch_eta=01:30:14 total_eta=96:54:36
+epoch=0 iter=600 bev=4.5576 offset=1.1306 height=0.0214 iter_time=0.69s avg_iter_time=0.73s epoch_eta=01:28:06 total_eta=95:15:13
+{'epoch': 0, 'iter': 600, 'BEV Loss': 4.557632923126221, 'offset loss': 1.130645990371704, 'height loss': 0.02144746668636799, 'F1_BEV
+_seg': 0.2871189773844641, 'avg_iter_time_sec': 0.726, 'epoch_eta': '01:28:06', 'total_eta': '95:15:13'}
+epoch=0 iter=650 bev=4.6535 offset=1.4167 height=0.0159 iter_time=0.67s avg_iter_time=0.72s epoch_eta=01:27:06 total_eta=94:48:23
+epoch=0 iter=700 bev=5.4652 offset=1.6102 height=0.0282 iter_time=0.35s avg_iter_time=0.72s epoch_eta=01:26:08 total_eta=94:23:54
+epoch=0 iter=750 bev=4.6437 offset=1.1951 height=0.0189 iter_time=0.87s avg_iter_time=0.71s epoch_eta=01:24:46 total_eta=93:32:29
+epoch=0 iter=800 bev=4.8321 offset=2.2917 height=0.0325 iter_time=0.35s avg_iter_time=0.71s epoch_eta=01:24:13 total_eta=93:35:04
+epoch=0 iter=850 bev=5.0667 offset=1.4633 height=0.0125 iter_time=0.72s avg_iter_time=0.71s epoch_eta=01:23:41 total_eta=93:38:41
+epoch=0 iter=900 bev=5.3566 offset=1.1417 height=0.0509 iter_time=0.82s avg_iter_time=0.72s epoch_eta=01:23:33 total_eta=94:09:33
+{'epoch': 0, 'iter': 900, 'BEV Loss': 5.356566429138184, 'offset loss': 1.1416853666305542, 'height loss': 0.05094527453184128, 'F1_BE
+V_seg': 0.10925449871465295, 'avg_iter_time_sec': 0.718, 'epoch_eta': '01:23:33', 'total_eta': '94:09:33'}
+epoch=0 iter=950 bev=4.1373 offset=1.7722 height=0.0437 iter_time=0.55s avg_iter_time=0.73s epoch_eta=01:23:52 total_eta=95:10:17
+epoch=0 iter=1000 bev=4.0939 offset=1.9724 height=0.0244 iter_time=0.49s avg_iter_time=0.72s epoch_eta=01:22:52 total_eta=94:43:26
+epoch=0 iter=1050 bev=3.9566 offset=0.7681 height=0.0058 iter_time=0.60s avg_iter_time=0.72s epoch_eta=01:22:00 total_eta=94:24:25
+epoch=0 iter=1100 bev=4.1262 offset=1.7421 height=0.0408 iter_time=0.88s avg_iter_time=0.72s epoch_eta=01:21:02 total_eta=93:58:16
+epoch=0 iter=1150 bev=4.2262 offset=1.7169 height=0.0324 iter_time=0.57s avg_iter_time=0.72s epoch_eta=01:20:22 total_eta=93:53:05
+epoch=0 iter=1200 bev=4.2437 offset=1.0490 height=0.0131 iter_time=1.00s avg_iter_time=0.72s epoch_eta=01:20:39 total_eta=94:53:56
+{'epoch': 0, 'iter': 1200, 'BEV Loss': 4.243705749511719, 'offset loss': 1.0490219593048096, 'height loss': 0.013051168993115425, 'F1_
+BEV_seg': 0.5015060240963856, 'avg_iter_time_sec': 0.724, 'epoch_eta': '01:20:39', 'total_eta': '94:53:56'}
+epoch=0 iter=1250 bev=4.1213 offset=1.6218 height=0.0180 iter_time=0.39s avg_iter_time=0.72s epoch_eta=01:19:52 total_eta=94:40:57
+epoch=0 iter=1300 bev=3.9265 offset=0.9292 height=0.0097 iter_time=1.19s avg_iter_time=0.72s epoch_eta=01:19:21 total_eta=94:46:01
+epoch=0 iter=1350 bev=4.8524 offset=2.4117 height=0.0776 iter_time=0.78s avg_iter_time=0.72s epoch_eta=01:18:30 total_eta=94:27:32
+epoch=0 iter=1400 bev=3.4322 offset=0.6608 height=0.0116 iter_time=0.84s avg_iter_time=0.72s epoch_eta=01:17:36 total_eta=94:05:51
+epoch=0 iter=1450 bev=3.8745 offset=1.4843 height=0.0163 iter_time=0.42s avg_iter_time=0.72s epoch_eta=01:17:04 total_eta=94:09:57
+epoch=0 iter=1500 bev=4.2743 offset=2.0783 height=0.0223 iter_time=1.06s avg_iter_time=0.72s epoch_eta=01:16:42 total_eta=94:25:56
+{'epoch': 0, 'iter': 1500, 'BEV Loss': 4.274292469024658, 'offset loss': 2.0783097743988037, 'height loss': 0.022330179810523987, 'F1_
+BEV_seg': 0.4361972547025928, 'avg_iter_time_sec': 0.721, 'epoch_eta': '01:16:42', 'total_eta': '94:25:56'}
+epoch=0 iter=1550 bev=3.0615 offset=0.9157 height=0.0076 iter_time=0.64s avg_iter_time=0.72s epoch_eta=01:15:58 total_eta=94:16:02
+epoch=0 iter=1600 bev=5.1643 offset=1.8084 height=0.0119 iter_time=0.44s avg_iter_time=0.72s epoch_eta=01:15:01 total_eta=93:49:19
+epoch=0 iter=1650 bev=3.1057 offset=1.2360 height=0.0155 iter_time=0.64s avg_iter_time=0.72s epoch_eta=01:14:32 total_eta=93:57:20
+epoch=0 iter=1700 bev=3.5687 offset=2.0707 height=0.0299 iter_time=0.83s avg_iter_time=0.71s epoch_eta=01:13:39 total_eta=93:34:38
+epoch=0 iter=1750 bev=3.3842 offset=1.7288 height=0.0217 iter_time=0.62s avg_iter_time=0.72s epoch_eta=01:13:07 total_eta=93:39:08
+epoch=0 iter=1800 bev=2.9816 offset=0.4006 height=0.0057 iter_time=0.72s avg_iter_time=0.72s epoch_eta=01:12:37 total_eta=93:45:36
+{'epoch': 0, 'iter': 1800, 'BEV Loss': 2.9816136360168457, 'offset loss': 0.4006040692329407, 'height loss': 0.005682424176484346, 'F1
+_BEV_seg': 0.4005524861878454, 'avg_iter_time_sec': 0.716, 'epoch_eta': '01:12:37', 'total_eta': '93:45:36'}
+epoch=0 iter=1850 bev=4.7982 offset=1.6529 height=0.0168 iter_time=1.17s avg_iter_time=0.72s epoch_eta=01:12:11 total_eta=93:58:10
+epoch=0 iter=1900 bev=3.3969 offset=2.2550 height=0.0149 iter_time=0.65s avg_iter_time=0.72s epoch_eta=01:11:33 total_eta=93:55:04
+epoch=0 iter=1950 bev=4.1898 offset=1.8801 height=0.0392 iter_time=0.31s avg_iter_time=0.72s epoch_eta=01:10:46 total_eta=93:39:26
+epoch=0 iter=2000 bev=3.5088 offset=1.4036 height=0.0217 iter_time=0.66s avg_iter_time=0.72s epoch_eta=01:10:20 total_eta=93:51:45
+epoch=0 iter=2050 bev=2.8562 offset=0.8703 height=0.0047 iter_time=0.61s avg_iter_time=0.72s epoch_eta=01:10:02 total_eta=94:15:44
+epoch=0 iter=2100 bev=3.9427 offset=2.0674 height=0.0512 iter_time=0.51s avg_iter_time=0.72s epoch_eta=01:09:34 total_eta=94:25:12
+{'epoch': 0, 'iter': 2100, 'BEV Loss': 3.9426932334899902, 'offset loss': 2.0674304962158203, 'height loss': 0.05115633085370064, 'F1_
+BEV_seg': 0.48771676300578043, 'avg_iter_time_sec': 0.722, 'epoch_eta': '01:09:34', 'total_eta': '94:25:12'}
+epoch=0 iter=2150 bev=3.1335 offset=2.1636 height=0.0103 iter_time=0.71s avg_iter_time=0.72s epoch_eta=01:09:03 total_eta=94:31:51
+epoch=0 iter=2200 bev=3.2521 offset=2.2786 height=0.0389 iter_time=1.00s avg_iter_time=0.72s epoch_eta=01:08:23 total_eta=94:26:31
+epoch=0 iter=2250 bev=4.2047 offset=2.7336 height=0.0248 iter_time=0.81s avg_iter_time=0.72s epoch_eta=01:07:48 total_eta=94:26:38
+epoch=0 iter=2300 bev=4.3597 offset=1.4958 height=0.0650 iter_time=0.51s avg_iter_time=0.72s epoch_eta=01:07:26 total_eta=94:46:00
+epoch=0 iter=2350 bev=3.7109 offset=1.4537 height=0.0164 iter_time=0.26s avg_iter_time=0.73s epoch_eta=01:07:00 total_eta=95:00:14
+epoch=0 iter=2400 bev=3.2986 offset=0.8305 height=0.0086 iter_time=0.76s avg_iter_time=0.73s epoch_eta=01:06:38 total_eta=95:19:29
+{'epoch': 0, 'iter': 2400, 'BEV Loss': 3.298581600189209, 'offset loss': 0.8305432200431824, 'height loss': 0.00859734695404768, 'F1_B
+EV_seg': 0.4627151051625239, 'avg_iter_time_sec': 0.729, 'epoch_eta': '01:06:38', 'total_eta': '95:19:29'}
+epoch=0 iter=2450 bev=3.3963 offset=1.5913 height=0.0169 iter_time=1.32s avg_iter_time=0.73s epoch_eta=01:06:12 total_eta=95:34:37
+epoch=0 iter=2500 bev=4.0489 offset=2.1418 height=0.0259 iter_time=0.94s avg_iter_time=0.73s epoch_eta=01:05:49 total_eta=95:54:07
+epoch=0 iter=2550 bev=2.8057 offset=0.6409 height=0.0128 iter_time=0.29s avg_iter_time=0.74s epoch_eta=01:05:21 total_eta=96:05:41
+epoch=0 iter=2600 bev=3.4795 offset=1.2089 height=0.0178 iter_time=0.56s avg_iter_time=0.74s epoch_eta=01:04:59 total_eta=96:26:59
+epoch=0 iter=2650 bev=2.7163 offset=1.0551 height=0.0098 iter_time=1.42s avg_iter_time=0.74s epoch_eta=01:04:19 total_eta=96:22:12
+epoch=0 iter=2700 bev=4.1305 offset=1.2984 height=0.0191 iter_time=0.84s avg_iter_time=0.74s epoch_eta=01:03:41 total_eta=96:19:21
+{'epoch': 0, 'iter': 2700, 'BEV Loss': 4.130457878112793, 'offset loss': 1.2984002828598022, 'height loss': 0.01912129670381546, 'F1_B
+EV_seg': 0.45255474452554745, 'avg_iter_time_sec': 0.737, 'epoch_eta': '01:03:41', 'total_eta': '96:19:21'}
+epoch=0 iter=2750 bev=4.2096 offset=2.2764 height=0.0361 iter_time=0.41s avg_iter_time=0.74s epoch_eta=01:03:03 total_eta=96:17:33
+epoch=0 iter=2800 bev=3.3122 offset=1.7115 height=0.0208 iter_time=0.97s avg_iter_time=0.74s epoch_eta=01:02:29 total_eta=96:20:19
+epoch=0 iter=2850 bev=4.3430 offset=1.4684 height=0.0316 iter_time=0.73s avg_iter_time=0.74s epoch_eta=01:02:00 total_eta=96:32:59
+epoch=0 iter=2900 bev=2.8094 offset=1.3214 height=0.0070 iter_time=0.61s avg_iter_time=0.74s epoch_eta=01:01:20 total_eta=96:27:54
+epoch=0 iter=2950 bev=3.0229 offset=1.1748 height=0.0102 iter_time=0.57s avg_iter_time=0.74s epoch_eta=01:00:33 total_eta=96:10:20
+epoch=0 iter=3000 bev=3.1145 offset=1.2959 height=0.0073 iter_time=0.64s avg_iter_time=0.74s epoch_eta=59:54 total_eta=96:06:02
+{'epoch': 0, 'iter': 3000, 'BEV Loss': 3.114548683166504, 'offset loss': 1.2959429025650024, 'height loss': 0.007308940403163433, 'F1_
+BEV_seg': 0.5552202776101388, 'avg_iter_time_sec': 0.736, 'epoch_eta': '59:54', 'total_eta': '96:06:02'}
+epoch=0 iter=3050 bev=3.2073 offset=1.9189 height=0.0178 iter_time=0.49s avg_iter_time=0.73s epoch_eta=59:10 total_eta=95:54:52
+epoch=0 iter=3100 bev=2.8266 offset=0.6443 height=0.0025 iter_time=0.99s avg_iter_time=0.74s epoch_eta=58:35 total_eta=95:56:04
+epoch=0 iter=3150 bev=3.9935 offset=1.8900 height=0.0173 iter_time=1.18s avg_iter_time=0.74s epoch_eta=58:05 total_eta=96:07:19
+epoch=0 iter=3200 bev=3.9181 offset=2.4785 height=0.0113 iter_time=0.56s avg_iter_time=0.74s epoch_eta=57:34 total_eta=96:16:11
+epoch=0 iter=3250 bev=3.2619 offset=2.4346 height=0.0175 iter_time=1.17s avg_iter_time=0.74s epoch_eta=57:12 total_eta=96:39:49
+epoch=0 iter=3300 bev=4.0925 offset=1.6506 height=0.0163 iter_time=0.65s avg_iter_time=0.74s epoch_eta=56:40 total_eta=96:49:25
+{'epoch': 0, 'iter': 3300, 'BEV Loss': 4.092465400695801, 'offset loss': 1.6505564451217651, 'height loss': 0.016296982765197754, 'F1_
+BEV_seg': 0.4944059669685669, 'avg_iter_time_sec': 0.742, 'epoch_eta': '56:40', 'total_eta': '96:49:25'}
+epoch=0 iter=3350 bev=3.0935 offset=1.3397 height=0.0163 iter_time=0.84s avg_iter_time=0.74s epoch_eta=56:11 total_eta=97:01:42
+epoch=0 iter=3400 bev=3.7088 offset=1.8674 height=0.0138 iter_time=0.89s avg_iter_time=0.75s epoch_eta=55:44 total_eta=97:19:29
+epoch=0 iter=3450 bev=3.0181 offset=1.9150 height=0.0298 iter_time=0.94s avg_iter_time=0.75s epoch_eta=55:31 total_eta=98:02:19
+epoch=0 iter=3500 bev=3.4621 offset=1.7597 height=0.0347 iter_time=0.96s avg_iter_time=0.75s epoch_eta=55:06 total_eta=98:23:31
+epoch=0 iter=3550 bev=3.5988 offset=1.9393 height=0.0148 iter_time=1.89s avg_iter_time=0.76s epoch_eta=54:45 total_eta=98:53:35
+epoch=0 iter=3600 bev=4.2643 offset=2.8023 height=0.0317 iter_time=0.29s avg_iter_time=0.76s epoch_eta=54:19 total_eta=99:13:37
+{'epoch': 0, 'iter': 3600, 'BEV Loss': 4.264284133911133, 'offset loss': 2.80226993560791, 'height loss': 0.03170452639460564, 'F1_BEV
+_seg': 0.5059665871121718, 'avg_iter_time_sec': 0.761, 'epoch_eta': '54:19', 'total_eta': '99:13:37'}
+epoch=0 iter=3650 bev=2.8962 offset=0.8282 height=0.0097 iter_time=1.02s avg_iter_time=0.76s epoch_eta=53:39 total_eta=99:10:43
+epoch=0 iter=3700 bev=4.2228 offset=2.0745 height=0.0327 iter_time=0.75s avg_iter_time=0.77s epoch_eta=53:21 total_eta=99:45:47
+epoch=0 iter=3750 bev=2.5930 offset=1.3589 height=0.0086 iter_time=1.58s avg_iter_time=0.77s epoch_eta=53:01 total_eta=100:20:52
+epoch=0 iter=3800 bev=2.9544 offset=0.7392 height=0.0128 iter_time=1.92s avg_iter_time=0.77s epoch_eta=52:24 total_eta=100:22:13
+epoch=0 iter=3850 bev=2.3857 offset=0.9083 height=0.0140 iter_time=0.43s avg_iter_time=0.77s epoch_eta=51:46 total_eta=100:23:54
+epoch=0 iter=3900 bev=3.1554 offset=0.9441 height=0.0075 iter_time=0.45s avg_iter_time=0.77s epoch_eta=50:59 total_eta=100:05:23
+{'epoch': 0, 'iter': 3900, 'BEV Loss': 3.155444860458374, 'offset loss': 0.9441351294517517, 'height loss': 0.007534004747867584, 'F1_
+BEV_seg': 0.45170257123002083, 'avg_iter_time_sec': 0.768, 'epoch_eta': '50:59', 'total_eta': '100:05:23'}
+epoch=0 iter=3950 bev=4.2339 offset=0.9903 height=0.0055 iter_time=0.24s avg_iter_time=0.76s epoch_eta=50:02 total_eta=99:28:07
+epoch=0 iter=4000 bev=3.3554 offset=0.9975 height=0.0477 iter_time=0.42s avg_iter_time=0.76s epoch_eta=49:09 total_eta=98:57:21
+epoch=0 iter=4050 bev=3.0803 offset=1.6242 height=0.0160 iter_time=0.31s avg_iter_time=0.76s epoch_eta=48:15 total_eta=98:24:21
+epoch=0 iter=4100 bev=3.7559 offset=2.2942 height=0.0297 iter_time=0.33s avg_iter_time=0.75s epoch_eta=47:21 total_eta=97:49:42
+epoch=0 iter=4150 bev=2.9533 offset=2.0498 height=0.0700 iter_time=1.12s avg_iter_time=0.75s epoch_eta=46:29 total_eta=97:18:55
+epoch=0 iter=4200 bev=2.4778 offset=1.7388 height=0.0119 iter_time=1.60s avg_iter_time=0.75s epoch_eta=45:45 total_eta=97:04:40
+{'epoch': 0, 'iter': 4200, 'BEV Loss': 2.4778218269348145, 'offset loss': 1.738828182220459, 'height loss': 0.011904047802090645, 'F1_
+BEV_seg': 0.7016574585635359, 'avg_iter_time_sec': 0.746, 'epoch_eta': '45:45', 'total_eta': '97:04:40'}
+epoch=0 iter=4250 bev=2.4637 offset=0.2665 height=0.0084 iter_time=0.62s avg_iter_time=0.75s epoch_eta=45:08 total_eta=97:05:22
+epoch=0 iter=4300 bev=2.7453 offset=2.1230 height=0.0320 iter_time=0.72s avg_iter_time=0.74s epoch_eta=44:24 total_eta=96:50:11
+epoch=0 iter=4350 bev=2.6894 offset=1.3359 height=0.0049 iter_time=0.69s avg_iter_time=0.74s epoch_eta=43:48 total_eta=96:50:33
+epoch=0 iter=4400 bev=2.3518 offset=1.7874 height=0.0221 iter_time=0.86s avg_iter_time=0.74s epoch_eta=43:11 total_eta=96:51:40
+epoch=0 iter=4450 bev=3.3125 offset=1.1972 height=0.0219 iter_time=0.70s avg_iter_time=0.74s epoch_eta=42:34 total_eta=96:50:53
+epoch=0 iter=4500 bev=4.5966 offset=1.8460 height=0.0640 iter_time=0.69s avg_iter_time=0.74s epoch_eta=41:58 total_eta=96:52:54
+{'epoch': 0, 'iter': 4500, 'BEV Loss': 4.596614837646484, 'offset loss': 1.8459677696228027, 'height loss': 0.06402435898780823, 'F1_B
+EV_seg': 0.5378684807256235, 'avg_iter_time_sec': 0.744, 'epoch_eta': '41:58', 'total_eta': '96:52:54'}
+epoch=0 iter=4550 bev=2.5054 offset=0.6933 height=0.0036 iter_time=0.71s avg_iter_time=0.74s epoch_eta=41:21 total_eta=96:53:35
+epoch=0 iter=4600 bev=2.8143 offset=1.0118 height=0.0035 iter_time=0.71s avg_iter_time=0.74s epoch_eta=40:44 total_eta=96:54:02
+epoch=0 iter=4650 bev=4.8363 offset=1.9664 height=0.0350 iter_time=0.70s avg_iter_time=0.75s epoch_eta=40:08 total_eta=96:55:30
+epoch=0 iter=4700 bev=3.2590 offset=0.9220 height=0.0593 iter_time=0.70s avg_iter_time=0.75s epoch_eta=39:32 total_eta=96:57:50
+epoch=0 iter=4750 bev=2.8033 offset=0.7984 height=0.0093 iter_time=0.90s avg_iter_time=0.75s epoch_eta=38:56 total_eta=97:00:42
+epoch=0 iter=4800 bev=4.1515 offset=1.5584 height=0.0552 iter_time=0.91s avg_iter_time=0.75s epoch_eta=38:20 total_eta=97:03:36
+{'epoch': 0, 'iter': 4800, 'BEV Loss': 4.151501178741455, 'offset loss': 1.5584068298339844, 'height loss': 0.05516447871923447, 'F1_B
+EV_seg': 0.41251133272892115, 'avg_iter_time_sec': 0.746, 'epoch_eta': '38:20', 'total_eta': '97:03:36'}
+epoch=0 iter=4850 bev=3.2475 offset=0.8208 height=0.0050 iter_time=0.68s avg_iter_time=0.75s epoch_eta=37:44 total_eta=97:06:50
+epoch=0 iter=4900 bev=3.7879 offset=1.6902 height=0.0259 iter_time=0.76s avg_iter_time=0.75s epoch_eta=37:08 total_eta=97:07:28
+epoch=0 iter=4950 bev=3.5344 offset=1.8779 height=0.0322 iter_time=0.91s avg_iter_time=0.75s epoch_eta=36:31 total_eta=97:10:14
+epoch=0 iter=5000 bev=3.9468 offset=1.9411 height=0.0198 iter_time=0.91s avg_iter_time=0.75s epoch_eta=35:55 total_eta=97:11:53
+epoch=0 iter=5050 bev=2.6883 offset=0.8687 height=0.0019 iter_time=0.76s avg_iter_time=0.75s epoch_eta=35:18 total_eta=97:13:22
+epoch=0 iter=5100 bev=2.6767 offset=0.7375 height=0.0045 iter_time=0.67s avg_iter_time=0.75s epoch_eta=34:41 total_eta=97:13:49
+{'epoch': 0, 'iter': 5100, 'BEV Loss': 2.676673412322998, 'offset loss': 0.7374666929244995, 'height loss': 0.0045168730430305, 'F1_BE
+V_seg': 0.4741447891805887, 'avg_iter_time_sec': 0.748, 'epoch_eta': '34:41', 'total_eta': '97:13:49'}
+epoch=0 iter=5150 bev=2.5021 offset=1.4674 height=0.0434 iter_time=0.87s avg_iter_time=0.75s epoch_eta=34:04 total_eta=97:13:50
+epoch=0 iter=5200 bev=2.6808 offset=0.9016 height=0.0125 iter_time=0.68s avg_iter_time=0.75s epoch_eta=33:27 total_eta=97:13:40
+epoch=0 iter=5250 bev=3.4412 offset=1.2088 height=0.0056 iter_time=0.76s avg_iter_time=0.75s epoch_eta=32:50 total_eta=97:15:27
+epoch=0 iter=5300 bev=2.8423 offset=0.9068 height=0.0058 iter_time=0.97s avg_iter_time=0.75s epoch_eta=32:16 total_eta=97:23:54
+epoch=0 iter=5350 bev=3.7557 offset=1.0827 height=0.0084 iter_time=0.61s avg_iter_time=0.75s epoch_eta=31:34 total_eta=97:10:57
+epoch=0 iter=5400 bev=3.4088 offset=1.9521 height=0.0271 iter_time=0.57s avg_iter_time=0.75s epoch_eta=30:53 total_eta=96:58:36
+{'epoch': 0, 'iter': 5400, 'BEV Loss': 3.4087817668914795, 'offset loss': 1.9521126747131348, 'height loss': 0.02708934061229229, 'F1_
+BEV_seg': 0.583812472357364, 'avg_iter_time_sec': 0.747, 'epoch_eta': '30:53', 'total_eta': '96:58:36'}
+epoch=0 iter=5450 bev=2.7611 offset=2.1612 height=0.0662 iter_time=0.82s avg_iter_time=0.75s epoch_eta=30:12 total_eta=96:46:47
+epoch=0 iter=5500 bev=2.5350 offset=0.3352 height=0.0020 iter_time=0.73s avg_iter_time=0.74s epoch_eta=29:32 total_eta=96:36:12
+epoch=0 iter=5550 bev=2.6102 offset=0.3948 height=0.0016 iter_time=0.69s avg_iter_time=0.74s epoch_eta=28:56 total_eta=96:39:34
+epoch=0 iter=5600 bev=2.7590 offset=1.2903 height=0.0117 iter_time=0.69s avg_iter_time=0.75s epoch_eta=28:23 total_eta=96:51:35
+epoch=0 iter=5650 bev=3.6447 offset=1.9927 height=0.0357 iter_time=0.69s avg_iter_time=0.75s epoch_eta=27:46 total_eta=96:53:41
+epoch=0 iter=5700 bev=4.4128 offset=0.9822 height=0.1172 iter_time=0.86s avg_iter_time=0.75s epoch_eta=27:09 total_eta=96:54:50
+{'epoch': 0, 'iter': 5700, 'BEV Loss': 4.412777423858643, 'offset loss': 0.9821815490722656, 'height loss': 0.11723236739635468, 'F1_B
+EV_seg': 0.47549530761209596, 'avg_iter_time_sec': 0.747, 'epoch_eta': '27:09', 'total_eta': '96:54:50'}
+epoch=0 iter=5750 bev=3.0352 offset=0.9075 height=0.0092 iter_time=0.64s avg_iter_time=0.75s epoch_eta=26:33 total_eta=96:57:43
+epoch=0 iter=5800 bev=2.6170 offset=1.1179 height=0.0145 iter_time=0.66s avg_iter_time=0.75s epoch_eta=25:56 total_eta=96:59:18
+epoch=0 iter=5850 bev=2.5977 offset=1.8228 height=0.0165 iter_time=1.07s avg_iter_time=0.75s epoch_eta=25:18 total_eta=96:56:46
+epoch=0 iter=5900 bev=2.9567 offset=1.3339 height=0.0325 iter_time=0.47s avg_iter_time=0.75s epoch_eta=24:39 total_eta=96:47:15
+epoch=0 iter=5950 bev=3.2681 offset=2.0805 height=0.0132 iter_time=1.09s avg_iter_time=0.75s epoch_eta=24:00 total_eta=96:42:25
+epoch=0 iter=6000 bev=2.3124 offset=0.4628 height=0.0028 iter_time=0.78s avg_iter_time=0.75s epoch_eta=23:23 total_eta=96:42:58
+{'epoch': 0, 'iter': 6000, 'BEV Loss': 2.3124396800994873, 'offset loss': 0.46275046467781067, 'height loss': 0.002775323111563921, 'F
+1_BEV_seg': 0.5710059171597633, 'avg_iter_time_sec': 0.746, 'epoch_eta': '23:23', 'total_eta': '96:42:58'}
+epoch=0 iter=6050 bev=2.8313 offset=2.3812 height=0.0292 iter_time=0.56s avg_iter_time=0.74s epoch_eta=22:44 total_eta=96:34:14
+epoch=0 iter=6100 bev=2.4750 offset=2.3785 height=0.0110 iter_time=1.21s avg_iter_time=0.74s epoch_eta=22:07 total_eta=96:34:20
+epoch=0 iter=6150 bev=2.2086 offset=1.4861 height=0.0096 iter_time=0.46s avg_iter_time=0.74s epoch_eta=21:29 total_eta=96:30:47
+epoch=0 iter=6200 bev=2.9999 offset=1.5204 height=0.0143 iter_time=0.76s avg_iter_time=0.74s epoch_eta=20:50 total_eta=96:22:08
+epoch=0 iter=6250 bev=3.0553 offset=2.4666 height=0.0061 iter_time=0.28s avg_iter_time=0.74s epoch_eta=20:12 total_eta=96:15:58
+epoch=0 iter=6300 bev=4.7393 offset=1.9719 height=0.2073 iter_time=0.82s avg_iter_time=0.74s epoch_eta=19:33 total_eta=96:05:00
+{'epoch': 0, 'iter': 6300, 'BEV Loss': 4.739269733428955, 'offset loss': 1.9719475507736206, 'height loss': 0.20730723440647125, 'F1_B
+EV_seg': 0.5231788079470198, 'avg_iter_time_sec': 0.741, 'epoch_eta': '19:33', 'total_eta': '96:05:00'}
+epoch=0 iter=6350 bev=2.0832 offset=0.6343 height=0.0022 iter_time=0.50s avg_iter_time=0.74s epoch_eta=18:53 total_eta=95:53:16
+epoch=0 iter=6400 bev=4.4254 offset=1.1618 height=0.4756 iter_time=0.85s avg_iter_time=0.74s epoch_eta=18:15 total_eta=95:43:43
+epoch=0 iter=6450 bev=3.1504 offset=0.2938 height=0.0004 iter_time=0.46s avg_iter_time=0.74s epoch_eta=17:38 total_eta=95:42:58
+epoch=0 iter=6500 bev=3.2624 offset=1.0206 height=0.0185 iter_time=0.82s avg_iter_time=0.74s epoch_eta=16:58 total_eta=95:29:13
+epoch=0 iter=6550 bev=3.7094 offset=1.9184 height=0.0193 iter_time=0.26s avg_iter_time=0.74s epoch_eta=16:21 total_eta=95:23:09
+epoch=0 iter=6600 bev=2.8493 offset=1.8858 height=0.0470 iter_time=0.39s avg_iter_time=0.74s epoch_eta=15:43 total_eta=95:15:24
+{'epoch': 0, 'iter': 6600, 'BEV Loss': 2.8492634296417236, 'offset loss': 1.8857994079589844, 'height loss': 0.0469510480761528, 'F1_B
+EV_seg': 0.6700111482720178, 'avg_iter_time_sec': 0.735, 'epoch_eta': '15:43', 'total_eta': '95:15:24'}
+epoch=0 iter=6650 bev=3.4108 offset=1.6202 height=0.0058 iter_time=0.57s avg_iter_time=0.73s epoch_eta=15:04 total_eta=95:06:03
+epoch=0 iter=6700 bev=3.1025 offset=0.6073 height=0.0229 iter_time=0.64s avg_iter_time=0.73s epoch_eta=14:27 total_eta=94:58:25
+epoch=0 iter=6750 bev=2.9611 offset=1.1350 height=0.0279 iter_time=1.19s avg_iter_time=0.73s epoch_eta=13:49 total_eta=94:53:08
+epoch=0 iter=6800 bev=2.4340 offset=2.4651 height=0.0088 iter_time=0.82s avg_iter_time=0.73s epoch_eta=13:13 total_eta=94:52:34
+epoch=0 iter=6850 bev=3.7106 offset=2.2956 height=0.0229 iter_time=0.68s avg_iter_time=0.73s epoch_eta=12:35 total_eta=94:43:16
+epoch=0 iter=6900 bev=3.2907 offset=1.7307 height=0.1033 iter_time=0.34s avg_iter_time=0.73s epoch_eta=11:58 total_eta=94:36:29
+{'epoch': 0, 'iter': 6900, 'BEV Loss': 3.2907259464263916, 'offset loss': 1.7307028770446777, 'height loss': 0.10327963531017303, 'F1_
+BEV_seg': 0.6027855153203343, 'avg_iter_time_sec': 0.731, 'epoch_eta': '11:58', 'total_eta': '94:36:29'}
+epoch=0 iter=6950 bev=3.6521 offset=1.5562 height=0.0234 iter_time=0.71s avg_iter_time=0.73s epoch_eta=11:20 total_eta=94:24:14
+epoch=0 iter=7000 bev=3.2537 offset=2.2641 height=0.0113 iter_time=0.34s avg_iter_time=0.73s epoch_eta=10:42 total_eta=94:13:51
+epoch=0 iter=7050 bev=3.6622 offset=1.7776 height=0.0070 iter_time=0.69s avg_iter_time=0.73s epoch_eta=10:05 total_eta=94:03:55
+epoch=0 iter=7100 bev=4.0711 offset=1.7963 height=0.0361 iter_time=0.85s avg_iter_time=0.73s epoch_eta=09:28 total_eta=93:57:06
+epoch=0 iter=7150 bev=3.7713 offset=1.6373 height=0.0111 iter_time=0.64s avg_iter_time=0.73s epoch_eta=08:51 total_eta=93:52:32
+epoch=0 iter=7200 bev=2.6518 offset=1.7488 height=0.0523 iter_time=0.27s avg_iter_time=0.73s epoch_eta=08:15 total_eta=93:52:06
+{'epoch': 0, 'iter': 7200, 'BEV Loss': 2.651759624481201, 'offset loss': 1.7488476037979126, 'height loss': 0.052328720688819885, 'F1_
+BEV_seg': 0.6756756756756757, 'avg_iter_time_sec': 0.726, 'epoch_eta': '08:15', 'total_eta': '93:52:06'}
+epoch=0 iter=7250 bev=2.8433 offset=1.0080 height=0.0132 iter_time=0.44s avg_iter_time=0.72s epoch_eta=07:38 total_eta=93:45:40
+epoch=0 iter=7300 bev=3.2136 offset=0.7832 height=0.1105 iter_time=0.63s avg_iter_time=0.72s epoch_eta=07:01 total_eta=93:34:24
+epoch=0 iter=7350 bev=3.0064 offset=2.4348 height=0.0114 iter_time=0.34s avg_iter_time=0.72s epoch_eta=06:24 total_eta=93:23:22
+epoch=0 iter=7400 bev=3.5955 offset=2.1035 height=0.1031 iter_time=0.48s avg_iter_time=0.72s epoch_eta=05:48 total_eta=93:15:11
+epoch=0 iter=7450 bev=2.4263 offset=1.4496 height=0.0218 iter_time=1.11s avg_iter_time=0.72s epoch_eta=05:11 total_eta=93:06:13
+epoch=0 iter=7500 bev=3.5121 offset=1.6510 height=0.0107 iter_time=0.34s avg_iter_time=0.72s epoch_eta=04:35 total_eta=92:55:10
+{'epoch': 0, 'iter': 7500, 'BEV Loss': 3.512066602706909, 'offset loss': 1.6510003805160522, 'height loss': 0.010666954331099987, 'F1_
+BEV_seg': 0.525, 'avg_iter_time_sec': 0.719, 'epoch_eta': '04:35', 'total_eta': '92:55:10'}
+epoch=0 iter=7550 bev=3.4789 offset=1.3121 height=0.0096 iter_time=0.68s avg_iter_time=0.72s epoch_eta=03:58 total_eta=92:47:33
+epoch=0 iter=7600 bev=2.0883 offset=1.6334 height=0.0060 iter_time=0.83s avg_iter_time=0.72s epoch_eta=03:22 total_eta=92:40:20
+epoch=0 iter=7650 bev=2.8907 offset=1.8429 height=0.0110 iter_time=0.61s avg_iter_time=0.72s epoch_eta=02:46 total_eta=92:33:56
+epoch=0 iter=7700 bev=2.5606 offset=1.9260 height=0.0079 iter_time=0.63s avg_iter_time=0.72s epoch_eta=02:10 total_eta=92:25:00
+epoch=0 iter=7750 bev=1.8151 offset=0.3908 height=0.0010 iter_time=0.24s avg_iter_time=0.71s epoch_eta=01:34 total_eta=92:19:38
+epoch=0 iter=7800 bev=3.3252 offset=1.3210 height=0.0045 iter_time=0.53s avg_iter_time=0.71s epoch_eta=00:59 total_eta=92:12:44
+{'epoch': 0, 'iter': 7800, 'BEV Loss': 3.3252029418945312, 'offset loss': 1.3209689855575562, 'height loss': 0.00445679621770978, 'F1_
+BEV_seg': 0.5882352941176471, 'avg_iter_time_sec': 0.714, 'epoch_eta': '00:59', 'total_eta': '92:12:44'}
+epoch=0 iter=7850 bev=3.2002 offset=1.9875 height=0.0120 iter_time=0.39s avg_iter_time=0.71s epoch_eta=00:23 total_eta=92:10:17
+Finished epoch 0 in 01:33:52 lr=0.000499657
+Running validation for epoch 0 -> /home/lijishuo/bev_lane_det/work_dirs/once_3dlanes_anchor_r50x2/predictions/epoch_000
+Traceback (most recent call last):
+  File "tools/train_once.py", line 459, in <module>
+    main()
+  File "tools/train_once.py", line 421, in main
+    run_validation(
+  File "/home/lijishuo/bev_lane_det/tools/val_once.py", line 158, in run_validation
+    benchmark_cfg = benchmark_cfg or configs.benchmark_cfg_file
+AttributeError: module 'tuly.config' has no attribute 'benchmark_cfg_file'
+WARNING:torch.distributed.elastic.multiprocessing.api:Sending process 2454559 closing signal SIGTERM
+WARNING:torch.distributed.elastic.multiprocessing.api:Sending process 2454560 closing signal SIGTERM
+WARNING:torch.distributed.elastic.multiprocessing.api:Sending process 2454561 closing signal SIGTERM
+WARNING:torch.distributed.elastic.multiprocessing.api:Sending process 2454562 closing signal SIGTERM
+WARNING:torch.distributed.elastic.multiprocessing.api:Sending process 2454563 closing signal SIGTERM
+ERROR:torch.distributed.elastic.multiprocessing.api:failed (exitcode: 1) local_rank: 0 (pid: 2454558) of binary: /home/lijishuo/minico
+nda3/envs/bevlanedet/bin/python
+Traceback (most recent call last):
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/distributed/elastic/multiprocessing/errors/__init_
+_.py", line 345, in wrapper
+    return f(*args, **kwargs)
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/distributed/run.py", line 719, in main
+    run(args)
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/distributed/run.py", line 710, in run
+    elastic_launch(
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/distributed/launcher/api.py", line 131, in __call_
+_
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/lijishuo/miniconda3/envs/bevlanedet/lib/python3.8/site-packages/torch/distributed/launcher/api.py", line 259, in launch_
+agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError:
+============================================================
+tools/train_once.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-05-21_10:29:01
+  host      : VDIG222
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 2454558)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+(bevlanedet) lijishuo@VDIG222:~/bev_lane_det$  GPU_IDS=7 bash test_once_anchor3dlane_r50x2.sh /home/lijishuo/bev_lane_det/work_dirs/on
+ce_3dlanes_anchor_r50x2/latest.pth
+Loaded backbone from /home/lijishuo/Anchor3DLane/ckpt/once_anchor3dlane++_r50x2(1).pth: matched=330 missing=0 unexpected=0
+0
+val_offical inference: 100%|██████████████████████████████████████████████████████████████████████████████| 3170/3170 [13:15<00:00,  3
+.98it/s]
+Predictions saved to /home/lijishuo/bev_lane_det/work_dirs/once_3dlanes_anchor_r50x2/predictions/latest
+=== val_offical ratio metric ===
+ratio@0.6: 100%|████████████████████████████████████████████████████████████████████████████████████████| 12678/12678 [03:23<00:00, 62
+.21it/s]
+{'f1_score': 0.8191849691802431,
+ 'precision': 0.7909230204633247,
+ 'recall': 0.8495425993666046,
+ 'x_error_close': 0.17750457446818563,
+ 'x_error_far': 1.0763894776187894,
+ 'z_error_close': 0.05954701774126659,
+ 'z_error_far': 1.02175948593002}
+Finished. Predictions are under: /home/lijishuo/bev_lane_det/work_dirs/once_3dlanes_anchor_r50x2/predictions/latest
+(bevlanedet) lijishuo@VDIG222:~/bev_lane_det$ tmux capture-pane -S -1000
+
+

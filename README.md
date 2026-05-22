@@ -96,6 +96,10 @@ python tools/eval_once_with_ratio.py \
 ```
 bash train_once_anchor3dlane_r50x2.sh
 ```
+- To resume training from a checkpoint:
+```
+bash train_once_anchor3dlane_r50x2.sh /path/to/latest.pth
+```
 - Test with:
 ```
 bash test_once_anchor3dlane_r50x2.sh /path/to/checkpoint.pth
@@ -159,6 +163,29 @@ bash test_once_sequence_split.sh /path/to/checkpoint.pth
 ```
 - This split uses the same ONCE annotations, but filters samples by sequence. Training-time validation only runs `val_offical` with `ratio_th=0.6`; the ONCE official benchmark evaluation is skipped.
 - You can still override dataset roots and image roots with `ONCE_3DLANES_ROOT`, `ONCE_3DLANES_TRAIN_IMAGE_ROOT`, and `ONCE_3DLANES_VAL_IMAGE_ROOT`.
+
+### Restore workflow after reboot
+- If you want to continue this project after shutting down and rebooting, first return to the repo:
+```
+cd /home/lijishuo/bev_lane_det
+```
+- Reopen a tmux session if needed:
+```
+tmux new -s tmux4
+```
+- Read the saved conversation summary:
+```
+sed -n '1,240p' history/tmux4_codex.txt
+```
+- Optionally locate the relevant README sections again:
+```
+rg -n "Anchor3DLane\\+\\+ R50x2|DINOv2 Small|origsplit|search" README.md
+```
+- In a new Codex conversation, ask it to continue from the saved history, for example:
+```
+Continue /home/lijishuo/bev_lane_det. Read history/tmux4_codex.txt first, then continue the ONCE R50 / DINOv2 work.
+```
+- Note: the online conversation itself is usually not automatically restored after a reboot, so the main recovery anchors are the repo changes, `history/tmux4_codex.txt`, and the commands/scripts recorded in this README.
 
 ## <span id="benchmark">Benchmark</span>
 

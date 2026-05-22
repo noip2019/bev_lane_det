@@ -1,0 +1,1000 @@
+ 1008  python app.py
+ 1009  cd ..
+ 1010  scp -r vlsamweb 222.29.51.221:/home/lijishuo/
+ 1011  scp -r MyInternVL 222.29.51.221:/home/lijishuo/
+ 1012  scp -r llmdet 222.29.51.221:/home/lijishuo/
+ 1013  nvidia-smi
+ 1014  cd llmdet
+ 1015  conda activate llmdet
+ 1016  pwd
+ 1017  python model_b.py
+ 1018  CUDA_VISIBLE_DEVICES=1 python model_b.py
+ 1019  nvidia-smi
+ 1020  pwd
+ 1021  conda activate llmdet
+ 1022  CUDA_VISIBLE_DEVICES=1 python model_b.py
+ 1023  conda activate dggt
+ 1024  conda activate moge
+ 1025  pip install "transformers==4.46.0"
+ 1026  cd hw2026_task3/
+ 1027  python src/server_moge.py --port 5002 --mono-backend moge2 --mono-depth-mode direct --semantic-constrained
+ 1028  conda env list
+ 1029  python src/server_mogepython src/server_moge——.py --port 5002 --mono-backend moge2 --mono-depth-mo.py --port 5002 --mono-backend moge2 --mono-depth-mode direct --semantic-constrained
+ 1030  python src/server_moge_sam3.py --port 5002 --mono-backend moge2 --mono-depth-mode direct --semantic-constrained
+ 1031  conda  activate moge
+ 1032  codex
+ 1033  nvidia-smi
+ 1034  cd llmdet
+ 1035  conda activate llmdet
+ 1036  python model_b.py 
+ 1037  conda activate movies
+ 1038  cd MyInternVL/
+ 1039  conda activate internvl
+ 1040  python model_a.py 
+ 1041  CUDA_VISIBLE_DEVICES=7 python model_a.py 
+ 1042  conda activate movies
+ 1043  cd vlsamweb/
+ 1044  conda activate llmdet
+ 1045  python app.py 
+ 1046  codex
+ 1047  cd MyInternVL/
+ 1048  conda activate internvl
+ 1049  CUDA_VISIBLE_DEVICES=7 python model_a.py 
+ 1050  nvidia-smi
+ 1051  cd llmdet
+ 1052  conda activate llmdet
+ 1053  CUDA_VISIBLE_DEVICES=7 python model_b.py 
+ 1054  cd vlsamweb/
+ 1055  conda activate llmdet
+ 1056  python app.py 
+ 1057  tmux
+ 1058  conda activate dggt
+ 1059  conda activate moge
+ 1060  python src/server_moge_sam3.py --port 5002 --mono-backend moge2 --mono-depth-mode direct --semantic-constrained
+ 1061  nvidia-smi
+ 1062  conda activate dggt
+ 1063  fuser -v /dev/nvidia* |awk '{for(i=1;i<=NF;i++)print "kill -9 " $i;}' | sh
+ 1064  nvidia-smi
+ 1065  conda activate llmdet
+ 1066  cd llmdet/
+ 1067  python model_b.py 
+ 1068  CUDA_VISIBLE_DEVICES=4 python model_b.py 
+ 1069  conda activate movies
+ 1070  conda activate internvl
+ 1071  cd MyInternVL/
+ 1072  nvidia-smi
+ 1073  CUDA_VISIBLE_DEVICES=4 python model_a.py 
+ 1074  tmux list-session
+ 1075  tmux a -t 0
+ 1076  conda activate movies
+ 1077  codex
+ 1078  tmux kill-server
+ 1079  tmux list-sessiconda activate movies
+ 1080  tmux list-session
+ 1081  tmux
+ 1082  cd /home/xiazhongyu/
+ 1083  ls
+ 1084  ssh lijishuo@222.29.51.221
+ 1085  conda activate movies
+ 1086  ll /home/lijishuo/DAIR-V2X-src/data/V2X-Seq-SPD
+ 1087  conda env list
+ 1088  conda activate dair_spd
+ 1089  pip show mmdet3d
+ 1090  conda create -n xet-v2x python=3.9 -y
+ 1091  conda activate xet-v2x
+ 1092  conda install -c conda-forge gcc_linux-64=9.4.0 gxx_linux-64=9.4.0 -y
+ 1093  ls /
+ 1094  export CUDA_HOME=/usr/local/cuda-11.8
+ 1095  export PATH=${CUDA_HOME}/bin:$PATH
+ 1096  pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
+ 1097  git clone https://github.com/yangzvv/XET-V2X.git
+ 1098  vim login.py
+ 1099  python login.py 
+ 1100  git clone https://github.com/yangzvv/XET-V2X.git
+ 1101  git clone git@github.com:yangzvv/XET-V2X.git
+ 1102  cd XET-V2X/
+ 1103  pip install -U openmim
+ 1104  mim install mmcv-full==1.6.0
+ 1105  pip install pkg_resources
+ 1106  pip install --upgrade pip setuptools wheel
+ 1107  mim install mmcv-full==1.6.0
+ 1108  pip install setuptools==60.2.0
+ 1109  pip install Cython ninja
+ 1110  pip install mmcv-full==1.6.0 --no-build-isolation
+ 1111  mim install mmdet==2.26.0
+ 1112  mim install mmsegmentation==0.29.1
+ 1113  mim install mmdet3d==1.0.0rc6
+ 1114  pip install mmdet3d==1.0.0rc6 --no-build-isolation
+ 1115  pip install -r requirements.txt
+ 1116  pip install "pip<24.1"
+ 1117  pip install -r requirements.txt
+ 1118  nvidia-smi
+ 1119  git clone https://github.com/argoverse/argoverse-api.git
+ 1120  git clone git@github.com:argoverse/argoverse-api.git
+ 1121  cd argoverse-api
+ 1122  pip install -e . 
+ 1123  pip install -e . --no-build-isolation
+ 1124  pip install "Cython<3.0"
+ 1125  pip install -e . --no-build-isolation
+ 1126  pip install scikit-build cmake
+ 1127  pip install -e . --no-build-isolation
+ 1128  numpy>=1.19.5
+ 1129  pip install numpy>=1.19.5
+ 1130  pip install -e . --no-build-isolation
+ 1131  cd ..
+ 1132  cd ../DAIR-V2X-src/
+ 1133  mv ../V2X-Seq-SPD-vehicle-side-image.zip ../V2X-Seq-SPD
+ 1134  unzip
+ 1135  cd ../V2X-Seq-SPD/
+ 1136  unzip V2X-Seq-SPD-vehicle-side-image.zip 
+ 1137  mv V2X-Seq-SPD-vehicle-side-image vehicle-side/image
+ 1138  cd ..
+ 1139  ./7zz x V2X-Seq-SPD-vehicle-side-velodyne.zip 
+ 1140  mv V2X-Seq-SPD-vehicle-side-velodyne V2X-Seq-SPD/vehicle-side/velodyne
+ 1141  nvidia-smi
+ 1142  cd hw2026_task3/
+ 1143  conda activate moge
+ 1144  history
+ 1145  python src/server_moge_sam3.py --port 5002 --mono-backend moge2 --mono-depth-mode direct --semantic-constrained
+ 1146  codex
+ 1147  python src/server_moge_sam3.py --port 5002 --mono-backend moge2 --mono-depth-mode direct --semantic-constrained
+ 1148  python src/server_moge_sam3.py --port 5002 --mono-backend moge2 --mono-depth-mode direct --semantic-constrained --scale-map-mode nearest_gt
+ 1149  python src/server_moge_sam3.py --port 5002 --mono-backend moge2 --mono-depth-mode direct
+ 1150  python src/server_moge_sam3.py --port 5002 --mono-backend moge2 --mono-depth-mode direct --semantic-constrained --scale-map-mode window_gt
+ 1151  git add .
+ 1152  git commit -m "method.md"
+ 1153  git push
+ 1154  git add .
+ 1155  git commit -m "update method.md"
+ 1156  git push
+ 1157  conda activate dggt
+ 1158  cd hw2026_task3/
+ 1159  git add .
+ 1160  git commit -m "0422"
+ 1161  git push
+ 1162  git add .
+ 1163  git commit -m "save_points"
+ 1164  git push
+ 1165  codex
+ 1166  conda activate movies
+ 1167  nvidia-smi
+ 1168  conda activate llmdet
+ 1169  cd llmdet/
+ 1170  python model_b.py 
+ 1171  tmux
+ 1172  conda env list
+ 1173  conda activate xet-v2x
+ 1174  nvidia-smi
+ 1175  cd XET-V2X/
+ 1176  mkdir datasets
+ 1177  cd datasets/
+ 1178  ln -S /home/lijishuo/V2X-Seq-SPD V2X-Seq-SPD
+ 1179  ln -s /home/lijishuo/V2X-Seq-SPD V2X-Seq-SPD
+ 1180  cd ..
+ 1181  git pull
+ 1182  python tools/v2xseq_data_converter/filter_front_fov.py     ./datasets/V2X-Seq-SPD/vehicle-side/velodyne     ./datasets/V2X-Seq-SPD/vehicle-side/velodyne_180deg     --fov 90.0
+ 1183  pip install cStringIO
+ 1184  pip uninstall pypcd -y
+ 1185  pip install git+https://github.com/klintan/pypcd.git
+ 1186  python tools/v2xseq_data_converter/filter_front_fov.py     ./datasets/V2X-Seq-SPD/vehicle-side/velodyne     ./datasets/V2X-Seq-SPD/vehicle-side/velodyne_180deg     --fov 90.0
+ 1187  python tools/v2xseq_data_converter/gen_xetv2x_data_info.py --base-dir ./datasets/V2X-Seq-SPD
+ 1188  python tools/v2xseq_data_converter/gen_xetv2x_dataset.py     --input ./datasets/V2X-Seq-SPD     --ln-input ./datasets/V2X-Seq-SPD     --output ./datasets/V2X-Seq-SPD-Delay-0     --sequences 0000 0001 0002 0003 0004 0005 0007 0008 0010 0014 0015 0016 0017 0018 0020 0021 0022 0023 0025 0029 0030 0032 0033 0034 0035 0036 0037 0040 0041 0042 0047 0048 0049 0050 0052 0054 0055 0056 0057 0058 0059 0060 0061 0062 0063 0066 0068 0070 0071 0072 0073 0075 0077 0078 0079 0080 0081 0082 0084 0085 0086 0087 0088 0089 0092 0093 0094     --update-label     --freq 10     --delay 0
+ 1189  python tools/v2xseq_data_converter/gen_xetv2x_dataset.py     --input ./datasets/V2X-Seq-SPD     --ln-input ./datasets/V2X-Seq-SPD     --output ./datasets/V2X-Seq-SPD-Delay-1     --sequences 0100 0101 0102 0103 0104 0105 0107 0108 0110 0114 0115 0116 0117 0118 0120 0121 0122 0123 0125 0129 0130 0132 0133 0134 0135 0136 0137 0140 0141 0142 0147 0148 0149 0150 0152 0154 0155 0156 0157 0158 0159 0160 0161 0162 0163 0166 0168 0170 0171 0172 0173 0175 0177 0178 0179 0180 0181 0182 0184 0185 0186 0187 0188 0189 0192 0193 0194     --update-label     --freq 10     --delay 1
+ 1190  python tools/v2xseq_data_converter/gen_xetv2x_dataset.py     --input ./datasets/V2X-Seq-SPD     --ln-input ./datasets/V2X-Seq-SPD     --output ./datasets/V2X-Seq-SPD-Delay-2     --sequences 0200 0201 0202 0203 0204 0205 0207 0208 0210 0214 0215 0216 0217 0218 0220 0221 0222 0223 0225 0229 0230 0232 0233 0234 0235 0236 0237 0240 0241 0242 0247 0248 0249 0250 0252 0254 0255 0256 0257 0258 0259 0260 0261 0262 0263 0266 0268 0270 0271 0272 0273 0275 0277 0278 0279 0280 0281 0282 0284 0285 0286 0287 0288 0289 0292 0293 0294     --update-label     --freq 10     --delay 2
+ 1191  bash tools/v2xseq_converter.sh V2X-Seq-SPD-Delay-0
+ 1192  conda activate movies
+ 1193  cd XET-V2X/
+ 1194  git pull
+ 1195  mkdir -p ckpts
+ 1196  cd ckpts
+ 1197  wget https://github.com/zhiqi-li/storage/releases/download/v1.0/bevformer_r101_dcn_24ep.pth
+ 1198  pwd
+ 1199  ls
+ 1200  ll
+ 1201  cd ..
+ 1202  CUDA_VISIBLE_DEVICES=4,5,6,7 ./tools/xet_v2x_dist_eval.sh ./projects/configs/v2x_seq_spd/xet_v2x.py ./ckpts/v2x_seq_spd_xet_v2x.pth
+ 1203  conda env list
+ 1204  cond aactivate xet-v2x
+ 1205  conda activate xet-v2x
+ 1206  CUDA_VISIBLE_DEVICES=4,5,6,7 ./tools/xet_v2x_dist_eval.sh ./projects/configs/v2x_seq_spd/xet_v2x.py ./ckpts/v2x_seq_spd_xet_v2x.pth
+ 1207  CUDA_VISIBLE_DEVICES=4,5,6,7 ./tools/xet_v2x_dist_eval.sh ./projects/configs/v2x_seq_spd/xet_v2x.py ./ckpts/v2x_seq_spd_xet_v2x.pth 4
+ 1208  codex
+ 1209  conda activate xet-v2x
+ 1210  exit
+ 1211  nvidia-smi
+ 1212  conda env list
+ 1213  git clone org-16943930@github.com:facebookresearch/vjepa2.git
+ 1214  cd vjepa2/
+ 1215  codex
+ 1216  conda activate movies
+ 1217  cd vjepa2
+ 1218  mkdir ckpt
+ 1219  cd ckpt/
+ 1220  pwd
+ 1221  conda activate xet-v2x
+ 1222  pip show torch
+ 1223  cd ../..
+ 1224  git clone git@github.com:Pointcept/Pointcept.git
+ 1225  cd Pointcept/
+ 1226  codex
+ 1227  cd ../XET-V2X/
+ 1228  bash trainl.sh 
+ 1229  tmux
+ 1230  conda activate movies
+ 1231  cd Pointcept/
+ 1232  mkdir ckpts
+ 1233  cd ckpts/
+ 1234  hf
+ 1235  export HF_ENDPOINT=https://hf-mirror.com
+ 1236  hf download Pointcept/Utonia --local-dir Utonia
+ 1237  tmux
+ 1238  conda activate movies
+ 1239  cd
+ 1240  cd XET-V2X/
+ 1241  mkdir thirdparty
+ 1242  cd thirdparty/
+ 1243  ln -s ~/vjepa2 vjepa2
+ 1244  ln -s ~/Pointcept pointcept
+ 1245  cd ..
+ 1246  codex
+ 1247  conda activate movies
+ 1248  nvidia-smi
+ 1249  watch nvidia-smi
+ 1250  codex
+ 1251  conda activate xet-v2x
+ 1252  CUDA_VISIBLE_DEVICES=1 ./tools/xet_v2x_dist_train.sh ./projects/configs/v2x_seq_spd/xet_v2x.py 1
+ 1253  conda activate movies
+ 1254  df -lh
+ 1255  cd /nvme0/
+ 1256  cd public_data/
+ 1257  mkdir Once
+ 1258  mv Once ONCE-3DLanes
+ 1259  cd ONCE-3DLanes/
+ 1260  pwd
+ 1261  ls
+ 1262  ll
+ 1263  unzip ONCE_3DLanes.zip 
+ 1264  ls
+ 1265  cd train/
+ 1266  ls
+ 1267  cd 000099
+ 1268  ls
+ 1269  cd ../..
+ 1270  ls
+ 1271  rm test_cam03.tar 
+ 1272  rm test_cam05.tar 
+ 1273  ls
+ 1274  mkdir test
+ 1275  mv test_cam01.tar test
+ 1276  cd test
+ 1277  ls
+ 1278  tar -xvf test_cam01.tar 
+ 1279  ls
+ 1280  rm test_cam01.tar 
+ 1281  cd ..
+ 1282  ls
+ 1283  cd ONCE-3DLanes/
+ 1284  ls
+ 1285  mv train_cam01.tar train
+ 1286  cd train/
+ 1287  ls
+ 1288  mv train_cam01.tar ..
+ 1289  mkdir data
+ 1290  ls
+ 1291  rm -r data/
+ 1292  cd ..
+ 1293  ls
+ 1294  mkdir data
+ 1295  mv train_cam01.tar data
+ 1296  ls
+ 1297  cd data
+ 1298  ls
+ 1299  mkdir train
+ 1300  mv train_cam01.tar train
+ 1301  cd train/
+ 1302  tar -xvf train_cam01.tar 
+ 1303  ls
+ 1304  cd data
+ 1305  ls
+ 1306  cd ..
+ 1307  mkdir val
+ 1308  cd val
+ 1309  mv ../../val_cam01.tar .
+ 1310  tar -xvf val_cam01.tar 
+ 1311  cd ..
+ 1312  pip install bypy
+ 1313  bypy info
+ 1314  bypy ls data
+ 1315  bypy info
+ 1316  bypy ls 
+ 1317  bypy download /once once
+ 1318  tmux
+ 1319  cd /nvme0/
+ 1320  find /nvme0 /nvme1 /data /data1 -type l -iname "*once*"
+ 1321  find /nvme0 /nvme1 /data /data1 -maxdepth 3 -type l -iname "*once*"
+ 1322  find /nvme0 /nvme1 /data /data1 -maxdepth 4 -type l -iname "*once*"
+ 1323  cd ~
+ 1324  git clone git@github.com:noip2019/bev_lane_det.git
+ 1325  cd bev_lane_det/
+ 1326  ls
+ 1327  conda create -n bevlanedet python=3.9 -y
+ 1328  conda activate bevlanedet
+ 1329  # 示例：假设你使用 CUDA 11.8
+ 1330  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+ 1331  conda install -c conda-forge numba==0.53.0 scipy==1.13.1 h5py==3.13.0 numpy==1.23.0
+ 1332  # 加上 --no-cache-dir 避免读取到之前中断或损坏的缓存文件
+ 1333  pip install -r requirements.txt --no-cache-dir
+ 1334  pip install -r requirement.txt --no-cache-dir
+ 1335  pip install setuptools wheel
+ 1336  pip install -r requirement.txt --no-cache-dir --no-build-isolation
+ 1337  pip install numpy==1.19.5 "Cython<3.0"
+ 1338  pip install -r requirement.txt --no-cache-dir --no-build-isolation
+ 1339  conda deactivate
+ 1340  conda env remove -n bevlanedet
+ 1341  conda create -n bevlanedet python=3.8 -y
+ 1342  conda activate bevlanedet
+ 1343  pip install --upgrade pip setuptools wheel
+ 1344  pip install torch==1.10.1+cu113 torchvision==0.11.2+cu113 torchaudio==0.10.1 -f https://download.pytorch.org/whl/cu113/torch_stable.html
+ 1345  pip install mmcv-full==1.4.0 -f https://download.openmmlab.com/mmcv/dist/cu113/torch1.10.0/index.html
+ 1346  pip install -r requirement.txt 
+ 1347  mkdir data
+ 1348  cd data
+ 1349  ls
+ 1350  ln -s /nvme0/public_data/ONCE-3DLanes ONCE-3DLanes
+ 1351  ls
+ 1352  cd ..
+ 1353  mkdir thirdparty
+ 1354  cd thirdparty/
+ 1355  git clone git@github.com:once-3dlanes/once_3dlanes_benchmark.git
+ 1356  ls
+ 1357  cd once_3dlanes_benchmark/
+ 1358  ls
+ 1359  bash requirements.sh 
+ 1360  pip show mmcv
+ 1361  pip show mmdet
+ 1362  pip show mmdetection3d
+ 1363  pip install mmcv-full==1.4.0 -f https://download.openmmlab.com/mmcv/dist/cu113/torch1.10.0/index.html
+ 1364  pip show mmcv
+ 1365  pip show mmcv-full
+ 1366  cd ..
+ 1367  cd data
+ 1368  cd ONCE-3DLanes
+ 1369  mv once/data/* raw_data/
+ 1370  cd ../..
+ 1371  codex
+ 1372  python
+ 1373  exit
+ 1374  conda activate llmdet
+ 1375  python model_b.py 
+ 1376  exit
+ 1377  conda activate movies
+ 1378  cd MyInternVL/
+ 1379  conda activate internvl
+ 1380  python model_a.py 
+ 1381  exit
+ 1382  conda activate movies
+ 1383  conda activate llmdet
+ 1384  cd vlsamweb/
+ 1385  python app.py 
+ 1386  exit
+ 1387  tmux list-session
+ 1388  tmux a -t 0
+ 1389  tmux a -t 1
+ 1390  tmux a -t 2
+ 1391  tmux a -t 3
+ 1392  tmux a -t 5
+ 1393  tmux a -t 6
+ 1394  conda activate movies
+ 1395  conda activate bevlandet
+ 1396  conda activate bevlanedet
+ 1397  cd bev_lane_det/
+ 1398  CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --standalone --nproc_per_node=4 tools/train_once.py --config tools/once_config.py
+ 1399  ll /home/lijishuo/bev_lane_det/data/ONCE-3DLanes/raw_data/000092/cam01/1616443082300.jpg
+ 1400  ll /home/lijishuo/bev_lane_det/data/ONCE-3DLanes/raw_data/000092/cam01
+ 1401  ll /home/lijishuo/bev_lane_det/data/ONCE-3DLanes/raw_data/000093/cam01
+ 1402  ll /home/lijishuo/bev_lane_det/data/ONCE-3DLanes/raw_data/000092/cam01
+ 1403  codex
+ 1404  ll /home/lijishuo/bev_lane_det/data/ONCE-3DLanes/raw_data/000092/cam01
+ 1405  CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --standalone --nproc_per_node=4 tools/train_once.py --config tools/once_config.py
+ 1406  codex
+ 1407  tmux
+ 1408  conda activate movies
+ 1409  watch nvidia-smi
+ 1410  cd bev_lane_det/
+ 1411  codex
+ 1412  conda activate movies
+ 1413  cd bev_lane_det/
+ 1414  conda activate bevlanedet
+ 1415  python tools/eval_once_with_ratio.py     --pred-root work_dirs/once_3dlanes/predictions/epoch_002     --ratio-th 0.6
+ 1416  conda run -n bevlanedet python tools/eval_once_with_ratio.py     --pred-root work_dirs/once_3dlanes/predictions/epoch_002     --ratio-th 0.6
+ 1417  python tools/eval_once_with_ratio.py     --pred-root work_dirs/once_3dlanes/predictions/epoch_002     --ratio-th 0.6
+ 1418  cd ..
+ 1419  unzip Anchor3DLane-main.zip 
+ 1420  mv Anchor3DLane-main Anchor3DLane
+ 1421  cd Anchor3DLane/
+ 1422  ls
+ 1423  pip show torch
+ 1424  conda create --name anchor3dlane --clone bevlanedet
+ 1425  conda activate anchor3dlane
+ 1426  pip install opencv-python
+ 1427  pip install matplotlib
+ 1428  pip install munkres
+ 1429  conda activate movies
+ 1430  conda activate bevlanedet
+ 1431  cd bev_lane_det/
+ 1432  ls
+ 1433  codex
+ 1434  conda activate anchor3dlane
+ 1435  cd ../Anchor3DLane/
+ 1436  export PYTHONPATH=$PYTHONPATH:./gen-efficientnet-pytorch
+ 1437  nvidia-smi
+ 1438  git branch
+ 1439  cd ..
+ 1440  unzip Anchor3DLane-anchor3dlane-.zip 
+ 1441  mv Anchor3DLane-anchor3dlane-/* Anchor3DLane/
+ 1442  rsync -av --ignore-existing=false Anchor3DLane-anchor3dlane-/* Anchor3DLane/
+ 1443  cd Anchor3DLane
+ 1444  CUDA_VISIBLE_DEVICES=5 python tools/test.py  configs_v2/once/anchor3dlane++_r50x2.py ckpt/once_anchor3dlane++_r50x2\(1\).pth --show-dir vis
+ 1445  pip install "numpy<1.24"
+ 1446  CUDA_VISIBLE_DEVICES=5 python tools/test.py  configs_v2/once/anchor3dlane++_r50x2.py ckpt/once_anchor3dlane++_r50x2\(1\).pth --show-dir vis
+ 1447  codex
+ 1448  export PYTHONPATH=$PYTHONPATH:./gen-efficientnet-pytorch
+ 1449  CUDA_VISIBLE_DEVICES=5 python tools/test.py  configs_v2/once/anchor3dlane++_r50x2.py ckpt/once_anchor3dlane++_r50x2\(1\).pth --show-dir vis
+ 1450  codex
+ 1451  tmux list-session
+ 1452  tmux a -t 7
+ 1453  conda activate anchor3dlane
+ 1454  pip install packaging
+ 1455  pip show pillow
+ 1456  pip show prettytable
+ 1457  pip show Shapely
+ 1458  pip show tabulate
+ 1459  pip install tabulate
+ 1460  pip show tensorflow
+ 1461  pip show ujson
+ 1462  pip install tensorflow
+ 1463  python setup.py develop
+ 1464  cd mmseg/models/utils/ops/
+ 1465  sh make.sh 
+ 1466  cd ~
+ 1467  wget https://developer.download.nvidia.com/compute/cuda/11.3.0/local_installers/cuda_11.3.0_465.19.01_linux.run
+ 1468  bash cuda_11.3.0_465.19.01_linux.run 
+ 1469  export CUDA_HOME=/home/lijishuo/cuda-11.3
+ 1470  export PATH=$CUDA_HOME/bin:$PATH
+ 1471  export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+ 1472  cd Anchor3DLane/
+ 1473  cd /home/lijishuo/Anchor3DLane/mmseg/ops
+ 1474  cd ..
+ 1475  cd models/
+ 1476  cd utils/
+ 1477  cd ops/
+ 1478  bash make.sh 
+ 1479  cd ../..
+ 1480  mkdir data
+ 1481  cd data/ONCE/
+ 1482  ll /home/lijishuo/bev_lane_det/data/ONCE-3DLanes
+ 1483  ln -s /nvme0/public_data/ONCE-3DLanes/raw_data raw_data
+ 1484  mkdir annotations
+ 1485  cd annotations/
+ 1486  ln -s /nvme0/public_data/ONCE-3DLanes/train train
+ 1487  ln -s /nvme0/public_data/ONCE-3DLanes/val val
+ 1488  ls
+ 1489  cd ../..
+ 1490  cd ..
+ 1491  cd tools/convert_datasets/
+ 1492  python once.py /home/lijishuo/Anchor3DLane/data/ONCE --merge
+ 1493  pip show opencv-python opencv-contrib-python mmcv
+ 1494  pip uninstall opencv-python opencv-contrib-python -y
+ 1495  pip install opencv-python==4.6.0.66 opencv-contrib-python==4.6.0.66
+ 1496  python once.py /home/lijishuo/Anchor3DLane/data/ONCE --merge
+ 1497  codex
+ 1498  tmux a -t 7
+ 1499  conda activate movies
+ 1500  git clone git@github.com:huang-yh/GaussianFormer.git
+ 1501  git clone https://github.com/PKUHaoWang/EmbodiedOcc2.git
+ 1502  cd MoGe
+ 1503  codex
+ 1504  conda env list
+ 1505  tmux
+ 1506  conda activate movies
+ 1507  du -sh /home/lijishuo/ISO_mm/data/scannet/posed_images
+ 1508  cd /home/lijishuo/ISO_mm/data/scannet/
+ 1509  ls
+ 1510  pip install -U huggingface_hub
+ 1511  export HF_ENDPOINT=https://hf-mirror.com
+ 1512  huggingface-cli download --repo-type dataset --resume-download hongxiaoy/OccScanNet --local-dir OccScanNet
+ 1513  hf download --repo-type dataset --resume-download hongxiaoy/OccScanNet --local-dir OccScanNet
+ 1514  hf download --repo-type dataset hongxiaoy/OccScanNet --local-dir OccScanNet
+ 1515  conda activate movies
+ 1516  df -lh
+ 1517  conda activate movies
+ 1518  conda create -n openmmlab python=3.8 -y
+ 1519  conda activate openmmlab
+ 1520  pip install -U openmim
+ 1521  mim install mmengine
+ 1522  pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1     --extra-index-url https://download.pytorch.org/whl/cu117
+ 1523  pip install "mmengine>=0.7.1,<1.0.0"
+ 1524  cd ISO_mm/
+ 1525  pip install "mmcv>=2.0.0rc4,<2.2.0"     -f https://download.openmmlab.com/mmcv/dist/cu117/torch1.13.0/index.html
+ 1526  pip install "mmdet>=3.0.0,<3.3.0"
+ 1527  pip install -v -e .
+ 1528  cd data/scannet/
+ 1529  ls
+ 1530  python extract_posed_images.py --max-images-per-scene 100
+ 1531  tmux
+ 1532  conda activate movies
+ 1533  git clone https://github.com/open-mmlab/mmdetection3d.git ISO_mm
+ 1534  ls
+ 1535  cd ISO_mm
+ 1536  git checkout v1.3.0
+ 1537  ls
+ 1538  cd data
+ 1539  ls
+ 1540  cd scannet/
+ 1541  ls
+ 1542  ls /nvme0/public_data/scannet-v2/
+ 1543  ln -s /nvme0/public_data/scannet-v2/scans/ scans
+ 1544  ls
+ 1545  python extract_posed_images.py --max-images-per-scene 100
+ 1546  PYTHONPATH='~/ISO_mm' python extract_posed_images.py --max-images-per-scene 100
+ 1547  cd ../..
+ 1548  ls
+ 1549  codex
+ 1550  tmux a -t 0
+ 1551  tmux a -t 1
+ 1552  tmux list-session
+ 1553  tmux a -t 8
+ 1554  tmux a -t 9
+ 1555  conda activate movies
+ 1556  cd tar -xzvf /home/lijishuo/ISO_mm/data/scannet
+ 1557  cd /home/lijishuo/ISO_mm/data/scannet
+ 1558  mkdir gathered_data
+ 1559  cd ~/EmbodiedOcc2/
+ 1560  cd data
+ 1561  ls
+ 1562  cd occscannet/
+ 1563  ls
+ 1564  ln -s /home/lijishuo/ISO_mm/data/scannet/gathered_data gathered_data
+ 1565  ln -s /home/lijishuo/ISO_mm/data/scannet/posed_images posed_images
+ 1566  ls
+ 1567  cd ..
+ 1568  ls
+ 1569  cd ..
+ 1570  ls
+ 1571  conda activate openmmlab
+ 1572  python preprocess.py 
+ 1573  conda activate openmmlab
+ 1574  python extract_posed_images.py --max-images-per-scene 100
+ 1575  conda activate movies
+ 1576  wget https://www.campar.in.tum.de/public_datasets/2020_3dv_wusc/CompleteScanNet_GT.zip
+ 1577  mv OccScanNet/preprocessed_data.tar.gz gathered_data/
+ 1578  cd gathered_data/
+ 1579  tar -xzvf preprocessed_data.tar.gz 
+ 1580  mv gathered_data/* .
+ 1581  rm gathered_data
+ 1582  rm -r gathered_data
+ 1583  exit
+ 1584  tmux a -t 9
+ 1585  tmux a -t 8
+ 1586  tmux a -t 9
+ 1587  tmux a -t 10
+ 1588  conda activate movies
+ 1589  nvidia-smi
+ 1590  watch nvidia-smi
+ 1591  conda activate movies
+ 1592  tmux
+ 1593  conda activate movies
+ 1594  tmux a -t 9
+ 1595  tmux a -t 8
+ 1596  tmux a -t 10
+ 1597  cd MoGe/
+ 1598  ls
+ 1599  codex
+ 1600  tmux a -t 8
+ 1601  cd dggt
+ 1602  conda activate movies
+ 1603  codesx
+ 1604  codex
+ 1605  tmux list-session
+ 1606  tmux a -t 8
+ 1607  cd dggt/
+ 1608  codex
+ 1609  conda activate movies
+ 1610  cd bev_lane_det/
+ 1611  codex
+ 1612  history
+ 1613  cd bevlanedet
+ 1614  cd bev_lane_det/
+ 1615  conda run -n bevlanedet python tools/eval_once_with_ratio.py     --pred-root work_dirs/once_3dlanes/predictions/epoch_002     --ratio-th 0.6
+ 1616  cd bevlanedet
+ 1617  cd bev_lane_det/
+ 1618  conda run -n bevlanedet python tools/eval_once_with_ratio.py     --pred-root work_dirs/once_3dlanes/predictions/epoch_0020     --ratio-th 0.6
+ 1619  conda run -n bevlanedet python tools/eval_once_with_ratio.py     --pred-root work_dirs/once_3dlanes/predictions/epoch_020     --ratio-th 0.6
+ 1620  tmux list-session
+ 1621  tmux a -t 5
+ 1622  tmux a -t 6
+ 1623  tmux a -t 7
+ 1624  conda run -n bevlanedet python tools/eval_once_with_ratio.py     --pred-root work_dirs/once_3dlanes/predictions/epoch_015     --ratio-th 0.6
+ 1625  conda run -n bevlanedet python tools/eval_once_with_ratio.py     --pred-root work_dirs/once_3dlanes/predictions/epoch_010     --ratio-th 0.6
+ 1626  conda activate movies
+ 1627  ll /home/lijishuo/ISO_mm/data/scannet/scans
+ 1628  conda env list
+ 1629  nvidia-smi
+ 1630  tmux a -t 10
+ 1631  tmux a -t 11
+ 1632  tmux list-session
+ 1633  tmux a -t 8
+ 1634  wget https://s3.eu-central-1.amazonaws.com/avg-kitti/data_depth_selection.zip
+ 1635  ls
+ 1636  ll
+ 1637  ll -h
+ 1638  rm data_depth_selection.zip
+ 1639  ls
+ 1640  unzip
+ 1641  ls
+ 1642  unzip data_depth_selection.zip.1
+ 1643  ls
+ 1644  rm data_depth_selection.zip.1 
+ 1645  exit
+ 1646  conda activate movies
+ 1647  cd /nvme1/public_data/kitti_depth/
+ 1648  wget https://s3.eu-central-1.amazonaws.com/avg-kitti/data_depth_annotated.zip
+ 1649  unzip data_depth_annotated.zip 
+ 1650  exit
+ 1651  wget https://s3.eu-central-1.amazonaws.com/avg-kitti/data_depth_velodyne.zip
+ 1652  unzip data_depth_velodyne.zip 
+ 1653  ls
+ 1654  rm data_depth_velodyne.zip 
+ 1655  ls
+ 1656  rm data_depth_annotated.zip 
+ 1657  exit
+ 1658  conda activate movies
+ 1659  cd /nvme1/public_data/kitti_depth/
+ 1660  tmux
+ 1661  cd ~
+ 1662  cd DMD3C/
+ 1663  cd datas
+ 1664  ln -S /nvme1/public_data/kitti_depth kitti
+ 1665  ln -s /nvme1/public_data/kitti_depth kitti
+ 1666  cd /nvme1/public_data/kitti_depth
+ 1667  cd ..
+ 1668  mkdir kitti_raw
+ 1669  cd kitti_raw/
+ 1670  vim download.sh
+ 1671  tmux
+ 1672  conda activate movies
+ 1673  cd OMNI-DC/
+ 1674  conda activate OMNIDC
+ 1675  cd src/
+ 1676  sh testing_scripts/infer_hw2026_samples.s
+ 1677  sh testing_scripts/infer_hw2026_samples.sh 
+ 1678  cd ../..
+ 1679  git clone https://github.com/Sharpiless/DMD3C.git
+ 1680  mv DMD3C-main DMD3C
+ 1681  cd DMD3C/
+ 1682  cd ..
+ 1683  git clone https://github.com/kakaxi314/BP-Net.git
+ 1684  mv BP-Net-main BP-Net
+ 1685  cp DMD3C/* BP-Net/
+ 1686  cp -r DMD3C/* BP-Net/
+ 1687  cd BP-Net/
+ 1688  ls
+ 1689  cd /nvme0/public_
+ 1690  cd /nvme0/public_data/
+ 1691  ls
+ 1692  cd /nvme1/public_data/
+ 1693  ls
+ 1694  cd lijishuo/
+ 1695  ls
+ 1696  cd ../..
+ 1697  d /
+ 1698  conda activate movies
+ 1699  cd Marigold-DC/
+ 1700  conda create -n marigold-dc python=3.10 -y
+ 1701  conda activate marigold-dc
+ 1702  pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+ 1703  pip install -r requirements.txt
+ 1704  python -m marigold_dc
+ 1705  codex
+ 1706  conda activate movies
+ 1707  conda activate marigold-dc
+ 1708  cd Marigold-DC/
+ 1709  python script/infer_hw2026_samples.py     --dataset-root /home/lijishuo/hw2026_task3/data     --output-dir /home/lijishuo/Marigold-DC/output/hw2026_samples     --sample-count 4     --overwrite
+ 1710  python script/infer_hw2026_samples.py     --dataset-root /home/lijishuo/hw2026_task3/data     --output-dir /home/lijishuo/Marigold-DC/output/hw2026_samples     --sequence-list 2 28 3 18     --index-list 1000 3301 8077 1235     --overwrite
+ 1711  cd ..
+ 1712  git clone https://github.com/princeton-vl/OMNI-DC.git
+ 1713  cd OMNI-DC/
+ 1714  conda create -n OMNIDC python=3.8
+ 1715  conda activate OMNIDC
+ 1716  conda install pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 cudatoolkit=11.3 -c pytorch -c conda-forge
+ 1717  pip install mmcv==1.4.4 -f https://download.openmmlab.com/mmcv/dist/cu113/torch1.10/index.html
+ 1718  pip install mmsegmentation==0.22.1
+ 1719  pip install timm tqdm thop tensorboardX tensorboard opencv-python ipdb h5py ipython Pillow==9.5.0 plyfile einops
+ 1720  pip install huggingface_hub
+ 1721  cd ..
+ 1722  git clone https://github.com/NVIDIA/apex
+ 1723  mv apex-master apex
+ 1724  cd apex/
+ 1725  git reset --hard 4ef930c1c884fdca5f472ab2ce7cb9b505d26c1a
+ 1726  cd ~
+ 1727  unzip apex-4ef930c1c884fdca5f472ab2ce7cb9b505d26c1a.zip 
+ 1728  mv apex-4ef930c1c884fdca5f472ab2ce7cb9b505d26c1a apex
+ 1729  cd apex/
+ 1730  conda install cudatoolkit-dev=11.3 -c conda-forge
+ 1731  pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
+ 1732  cd ../OMNI-DC/
+ 1733  export HF_ENDPOINT=https://hf-mirror.com
+ 1734  hf download zuoym15/OMNI-DC
+ 1735  ls
+ 1736  mkdir -p ~/OMNI-DC/checkpoints
+ 1737  cp -r ~/.cache/huggingface/hub/models--zuoym15--OMNI-DC/snapshots/9ec01f0a9c3060579d26dd9327abd4e07e4abcf0       ~/OMNI-DC/checkpoints/OMNI-DC
+ 1738  ll /home/lijishuo/.cache/huggingface/hub/models--zuoym15--OMNI-DC/snapshots/9ec01f0a9c3060579d26dd9327abd4e07e4abcf0/.gitattributes
+ 1739  hf download zuoym15/OMNI-DC checkpoints/zuoym15/OMNI-DC
+ 1740  hf download zuoym15/OMNI-DC --local_dir checkpoints/zuoym15/OMNI-DC
+ 1741  hf download zuoym15/OMNI-DC --local-dir checkpoints/zuoym15/OMNI-DC
+ 1742  cd src/
+ 1743  sh testing_scripts/demo.sh 
+ 1744  codex
+ 1745  git clone https://github.com/prs-eth/Marigold-DC.git
+ 1746  cd Marigold-DC
+ 1747  codex
+ 1748  conda activate movies
+ 1749  cd Marigold-DC/
+ 1750  conda activate marigold-dc
+ 1751  export HF_ENDPOINT=https://hf-mirror.com
+ 1752  huggingface-cli download --resume-download prs-eth/marigold-depth-v1-0 --local-dir prs-eth/marigold-depth-v1-0
+ 1753  hf download prs-eth/marigold-depth-v1-0 --local-dir prs-eth/marigold-depth-v1-0
+ 1754  df -lh
+ 1755  hf download prs-eth/marigold-depth-v1-0 --local-dir prs-eth/marigold-depth-v1-0
+ 1756  python -m marigold_dc
+ 1757  ll /home/lijishuo/Marigold-DC/data/gt_vis.png
+ 1758  python
+ 1759  codex
+ 1760  tmux a -t 10
+ 1761  tmux list-session 
+ 1762  tmux a -t 0
+ 1763  cd DMD3C/
+ 1764  wget https://github.com/Sharpiless/DMD3C/releases/download/pretrain-checkpoints/dmd3c_distillation_depth_anything_v2.pth
+ 1765  mv dmd3c_distillation_depth_anything_v2.pth checkpoints
+ 1766  cd /nvme0/public_data/
+ 1767  ls
+ 1768  cd KITTI/
+ 1769  ls
+ 1770  cd dataset/
+ 1771  ls
+ 1772  cd sequences/
+ 1773  ls
+ 1774  cd 00
+ 1775  ls
+ 1776  cd /nvme1/public_data/
+ 1777  ls
+ 1778  tmux list-session
+ 1779  tmux a -t 0
+ 1780  ls
+ 1781  cd kitti_raw/
+ 1782  ls
+ 1783  cd ..
+ 1784  mv kitti_raw kitti_depth/raw
+ 1785  cd kitti_depth/raw/
+ 1786  ls
+ 1787  du -sh ..
+ 1788  cd ..
+ 1789  du -sh kitti_depth
+ 1790  df -lh
+ 1791  cd kitti_depth/
+ 1792  ls
+ 1793  cd raw/
+ 1794  ls
+ 1795  cd 2011_
+ 1796  du -sh .
+ 1797  cd ~
+ 1798  cd DMD3C/`
+ 1799  cd DMD3C/
+ 1800  ls
+ 1801  conda env list
+ 1802  rm -r /home/lijishuo/miniconda3/envs/xet-v2x
+ 1803  rm -r /home/lijishuo/miniconda3/envs/dair_spd
+ 1804  df -lh
+ 1805  codex
+ 1806  nvidia-sconda activate movies
+ 1807  mi
+ 1808  nvidia-smi
+ 1809  GPU_IDS=0,1,2,3,4,5,6,7 bash test_once.sh /home/lijishuo/bev_lane_det/ep0099.pth
+ 1810  cd bev_lane_det/
+ 1811  conda activate bevlanedet
+ 1812  GPU_IDS=0,1,2,3,4,5,6,7 bash test_once.sh /home/lijishuo/bev_lane_det/ep0099.pth
+ 1813  codex
+ 1814  conda activate movies
+ 1815  nvidia-smi
+ 1816  cd /urconda activate movies
+ 1817  cd /usr/local/
+ 1818  ls
+ 1819  cd cuda-12.1/
+ 1820  cd ~/bev_lane_det/
+ 1821  conda env list
+ 1822  history
+ 1823  conda env list
+ 1824  codex
+ 1825  conda activate movies
+ 1826  conda env create -n dmd3c -f environment.yml
+ 1827  cd
+ 1828  cd DMD3C/
+ 1829  conda env create -n dmd3c -f environment.yml
+ 1830  conda activate dmd3c
+ 1831  pip install open3d imutils matplotlib
+ 1832  cd exts/
+ 1833  python setup.py install
+ 1834  conda install -c conda-forge gcc_linux-64=11 gxx_linux-64=11
+ 1835  rm -rf build/
+ 1836  python setup.py install
+ 1837  /usr/bin/gcc --version
+ 1838  export CC=/usr/bin/gcc
+ 1839  export CXX=/usr/bin/g++
+ 1840  rm -rf build/
+ 1841  python setup.py install
+ 1842  cd ..
+ 1843  bash demo.sh
+ 1844  codex
+ 1845  cd conda activate movies
+ 1846  cd DMD3C/
+ 1847  cd datas
+ 1848  cd kitti
+ 1849  ls
+ 1850  cd raw/
+ 1851  ls
+ 1852  cd 2011_09_26/
+ 1853  cd /home/lijishuo/DMD3C/datas/kitti/raw/2011_09_26/2011_09_26_drive_0001_sync
+ 1854  du -sh image_00
+ 1855  du -sh image_01
+ 1856  du -sh image_02
+ 1857  du -sh image_03
+ 1858  du -sh velodyne_points/
+ 1859  cd ../..
+ 1860  codex
+ 1861  ./remove_kitti_sequence_dirs.sh --execute
+ 1862  cd ..
+ 1863  ll
+ 1864  du -sh /nvme1/public_data/kitti_depth
+ 1865  exit
+ 1866  conda activate movies
+ 1867  nvidia-smi
+ 1868  ps
+ 1869  ps -a
+ 1870  conda activate movies
+ 1871  tmux
+ 1872  conda activate movies
+ 1873  cd hw2026_task3/
+ 1874  conda activate moge
+ 1875  codex
+ 1876  cd /home/lijishuo/BEVLaneDetCopy_toPKU/data/
+ 1877  codex
+ 1878  conda activate movies
+ 1879  cd DMD3C/
+ 1880  conda activate dmd3c
+ 1881  torchrun --nproc_per_node=4 --master_port 4321 train_distill.py     gpus=[0,1,2,3] num_workers=4 name=DMD3D_BP_KITTI     ++chpt=checkpoints/pretrained_mixed_singleview_256.pth     net=PMP data=KITTI     lr=5e-4 train_batch_size=2 test_batch_size=1     sched/lr=NoiseOneCycleCosMo sched.lr.policy.max_momentum=0.90     nepoch=30 test_epoch=25 ++net.sbn=true 
+ 1882  python eval_kitti_val.py     --checkpoint checkpoints/dmd3c_distillation_depth_anything_v2.pth     --data-root datas/kitti     --split selval     --gpu 0     --batch-size 1     --num-workers 4     --metrics-json outputs/eval_selval_metrics.json
+ 1883  conda activate movies
+ 1884  nvidia-smi
+ 1885  df -lh
+ 1886  cd /nvme1/public_data/
+ 1887  ls
+ 1888  cd lijishuo/
+ 1889  ls
+ 1890  cd street_frames_multithread/
+ 1891  ls
+ 1892  cd ..
+ 1893  du -sh street_frames_multithread
+ 1894  cd ..
+ 1895  mv lijishuo ..
+ 1896  ls
+ 1897  mv lijishuo/* ../lijishuo/
+ 1898  ls
+ 1899  cd lijishuo/
+ 1900  cd ..
+ 1901  rm lijishuo
+ 1902  rm -r lijishuo
+ 1903  ls
+ 1904  ll
+ 1905  cd ..
+ 1906  ls
+ 1907  mkdir public_model
+ 1908  cd public_
+ 1909  cd public_model/
+ 1910  mkdir VGGT_omega
+ 1911  cd VGGT_omega/
+ 1912  ls
+ 1913  wget https://cdn-lfs-cn-1.modelscope.cn/prod/lfs-objects/2c/59/393e2d15569498d42191e03c29aabc72bdb243a20870b22a0b24a8f8095c?filename=vggt_omega_1b_256_text.pt&namespace=sanqilu376&repository=VGGT-Omega&revision=master&tag=model&auth_key=1779251551-5ce981faaa9a42a390a96665cdd6f226-0-c93a66c27c3bd6a569a043633b69da5a
+ 1914  ll
+ 1915  bypy
+ 1916  bypy -v
+ 1917  history
+ 1918  bypy info
+ 1919  bypy --downloader aria2 downdir /vggt_omega
+ 1920  ls
+ 1921  tmux list-session
+ 1922  tmux a -t 1
+ 1923  tmux a -t 2
+ 1924  conda activate movies
+ 1925  cd BEVLaneDetCopy_toPKU/
+ 1926  conda activate bevlanedet
+ 1927  python tools/val_apollo.py 
+ 1928  tmux
+ 1929  conda activate movies
+ 1930  wget https://etrans32.etrans.huawei.com/transWeb/fileDownload?fileName=once_json.tar&relativeDir=&fileType=.tar&value=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJkYXRhIjp7ImNsaWVudElwQWRkcmVzcyI6IjExMS4yMDUuMjMwLjEwOCIsInczQWNjb3VudCI6IiIsImFjdGlvbiI6MSwidG9SZWdpb25Nb2QiOjQsImZyb21SZWdpb25Nb2QiOjIsImFwcGxpY2F0aW9uSWQiOjgwMjczOTEyMiwidHJhbnNmZXJJZCI6Mjg0NTY5MH0sImlzcyI6ImV0cmFuczMyLmV0cmFucy5odWF3ZWkuY29tOjQ0MyIsImV4cCI6MTc3OTQzNzY1MywiaWF0IjoxNzc5MjY0ODUzfQ.bC2AcDUNW7uPlsrfjtQr_87ddXIFgCULahe5XtHxJC677ZRwuKjC_pkKnHnrpNfvtn2rrHpbCMDxpqWJpkV1Z_8Pa1VXbJ9DGQy2IJ1BcssUnjRYT4Z-0Z1hzXYsOUF0A89cDaCufdUVkEL3zfnC9tbBk7aH_iQnUEQfU3UHovIvKLTP-sdb7NlqtKJT5bVqP5tPR5K1fiY8WcKR1y-5TPmuLcvBu63LbrusG_rcf1Ae1ofLMoZhrQwZq7O3mRZqk6GcJ7neTUQKyUgmOXQ9lPc7ljMBfNMlkGPmmbsbLcoQ_JtRouHpDyzR9pyv9A35_nGzNooGfJB9PNzcHNS9bdCIks9OzLaLglUw-DEiUDbZ__24P5_yEWA2SsU11iMN23N4jXfY-k_fwz61MqB-t-PqCKzZbJS9PnUpJheQJMAJufv_gcYpikbU6Tr1LJmJPbq0TvGbDrmImEeZ5VgAagylsyOFxsFMXZCC0Av-szxd55WlNCPflF83EkXDXOQsaoXNnlqBmBSaQkKto-91FJrSoW2fPdHBLj1ZU_FG8wTzReuNR6p35R23Fcol8cdOlDWZ4NWE_6e5dn58-HWZkTughQm5zV5M5RzNpGxDk3gfUsVnQfb32NQ8TnAz59OrLu4V_9vd23r1eXOiv97eZpEhxNVu-RiQzjxQ5epLxbM&params=security%3A7974CCC610A06C6AC498E167%3A073AABC035DB0C0BE1C1105B93CFABD712BCB8F701E4EB446E1E5571480B194CE3DCE3E580680D1E741E80EE933A67A07A9329F267EFBB0A64F0181EFD48F8CD0E6E7C0B2941953B071741D03DEB&lang=English
+ 1931  mv once_json.tar BEVLaneDetCopy_toPKU/data/
+ 1932  cd BEVLaneDetCopy_toPKU/data/
+ 1933  ls
+ 1934  ll
+ 1935  tar -xvf once_json.tar 
+ 1936  cd ..
+ 1937  codex
+ 1938  tmux a -t 3
+ 1939  tmux a -t 2
+ 1940  watch nvidia-smi 
+ 1941  nvidia-smi 
+ 1942  tmux list-session 
+ 1943  tmux a -t 3
+ 1944  tmux a -t 2
+ 1945  tmux a -t 3
+ 1946  tmux a -t 2
+ 1947  tmux a -t 3
+ 1948  cd BEVLaneDetCopy_toPKU/ 
+ 1949  vim train2.sh
+ 1950  tmux a -t 3
+ 1951  tmux a -t 2
+ 1952  tmux a -t 3
+ 1953  cd /nvme1/lijishuo
+ 1954  ls
+ 1955  cd bevlanedet_pku/
+ 1956  ls
+ 1957  cd model_results/
+ 1958  ls
+ 1959  cd ONCE_100_epoch_fix_camerak_split_train_with_pitch_height_by_sequence/
+ 1960  ls
+ 1961  cat val.txt 
+ 1962  tmux a -t 3
+ 1963  conda activate movies
+ 1964  cconda activate movies
+ 1965  cd BEVLaneDetCopy_toPKU
+ 1966  conda activate bevlanedet
+ 1967  git init
+ 1968  git add .
+ 1969  git reset
+ 1970  git add .
+ 1971  git commit -m "first edit"
+ 1972  python tools/val_apollo.py 
+ 1973  df conda activate movies
+ 1974  df -lh
+ 1975  cd hw2026_task3/
+ 1976  codex
+ 1977  conda activate movies
+ 1978  conda activate bevlanedet
+ 1979  cd bev_lane_det/
+ 1980  history
+ 1981  conda activate movies
+ 1982  cd /nvme1/lijishuo/
+ 1983  mkdir bevlanedet_pku
+ 1984  cd bevlanedet_pku/
+ 1985  tmux a -t 3
+ 1986  tmux a -t 2
+ 1987  conda activate movies
+ 1988  cd BEVLaneDetCopy_toPKU_1/
+ 1989  git init
+ 1990  git add .
+ 1991  git commit -m "original"
+ 1992  conda activate bevlanedet
+ 1993  python tools/val_apollo.py 
+ 1994  pip uninstall -y opencv-python opencv-python-headless opencv-contrib-python opencv-contrib-python-headless
+ 1995  pip install opencv-python-headless==4.8.0.74
+ 1996  python tools/val_apollo.py 
+ 1997  tmux a -t 3
+ 1998  tmux a -t 3
+ 1999  tmux a -t 2
+ 2000  GPU_IDS=1,2,3,4,5,6,7 NPROC_PER_NODE=7 bash train_once_sequence_split.sh
+ 2001  cd bev_lane_det/
+ 2002  conda activate bevlanedet
+ 2003  GPU_IDS=1,2,3,4,5,6,6 NPROC_PER_NODE=6 bash train_once_anchor3dlane_r50x2.sh
+ 2004  GPU_IDS=1,2,3,4,5,6 NPROC_PER_NODE=6 bash train_once_anchor3dlane_r50x2.sh
+ 2005  tmux capture-pane -S -1000
+ 2006  tmux show-buffer > history/tmux6_screen.txt
+ 2007  history > history/tmux6_history.txt

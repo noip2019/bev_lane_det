@@ -1,0 +1,50 @@
+(base) lijishuo@VDIG222:~$ cd Anchor3DLane/
+(base) lijishuo@VDIG222:~/Anchor3DLane$ conda activate anchor3dlane
+(anchor3dlane) lijishuo@VDIG222:~/Anchor3DLane$ bash test_once_original_valofficial.sh '/home/lijishuo/Anchor3DLane/
+> ckpt/once_anchor3dlane++_r50x2(1).pth'
+Checkpoint not found: /home/lijishuo/Anchor3DLane/
+ckpt/once_anchor3dlane++_r50x2(1).pth
+(anchor3dlane) lijishuo@VDIG222:~/Anchor3DLane$ bash test_once_original_valofficial.sh '/home/lijishuo/Anchor3DLane/ckpt/once_anchor3d
+lane++_r50x2(1).pth'
+is_resample: True
+Now loading annotations...
+after load annotation
+find 3325 samples in ./data/ONCE/data_lists/val.txt.
+/home/lijishuo/Anchor3DLane/mmseg/models/lane_detector/utils/anchor.py:82: UserWarning: To copy construct from a tensor, it is recomme
+nded to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor
+).
+  self.y_steps = torch.tensor(self.y_steps, dtype=torch.float32)
+/home/lijishuo/Anchor3DLane/mmseg/models/backbones/resnet.py:431: UserWarning: DeprecationWarning: pretrained is a deprecated, please
+use "init_cfg" instead
+  warnings.warn('DeprecationWarning: pretrained is a deprecated, '
+load checkpoint from local path: /home/lijishuo/Anchor3DLane/ckpt/once_anchor3dlane++_r50x2(1).pth
+2026-05-22 05:23:20,367 - root - INFO - ModulatedDeformConvPack backbone.layer3.0.conv2 is upgraded to version 2.
+2026-05-22 05:23:20,415 - root - INFO - ModulatedDeformConvPack backbone.layer3.1.conv2 is upgraded to version 2.
+2026-05-22 05:23:20,433 - root - INFO - ModulatedDeformConvPack backbone.layer3.2.conv2 is upgraded to version 2.
+2026-05-22 05:23:20,445 - root - INFO - ModulatedDeformConvPack backbone.layer3.3.conv2 is upgraded to version 2.
+2026-05-22 05:23:20,452 - root - INFO - ModulatedDeformConvPack backbone.layer3.4.conv2 is upgraded to version 2.
+2026-05-22 05:23:20,460 - root - INFO - ModulatedDeformConvPack backbone.layer3.5.conv2 is upgraded to version 2.
+2026-05-22 05:23:20,463 - root - INFO - ModulatedDeformConvPack backbone.layer4.0.conv2 is upgraded to version 2.
+2026-05-22 05:23:20,515 - root - INFO - ModulatedDeformConvPack backbone.layer4.1.conv2 is upgraded to version 2.
+2026-05-22 05:23:20,567 - root - INFO - ModulatedDeformConvPack backbone.layer4.2.conv2 is upgraded to version 2.
+/home/lijishuo/Anchor3DLane/mmseg/models/lane_detector/position_encoding.py:49: UserWarning: __floordiv__ is deprecated, and its behav
+ior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in
+incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor
+division, use torch.div(a, b, rounding_mode='floor').
+  dim_t = self.temperature ** (2 * (dim_t // 2) / self.num_pos_feats)  # [C]
+/home/lijishuo/miniconda3/envs/anchor3dlane/lib/python3.8/site-packages/torch/functional.py:445: UserWarning: torch.meshgrid: in an up
+coming release, it will be required to pass the indexing argument. (Triggered internally at  ../aten/src/ATen/native/TensorShape.cpp:2
+157.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/lijishuo/miniconda3/envs/anchor3dlane/lib/python3.8/site-packages/torch/nn/functional.py:4003: UserWarning: Default grid_sample
+and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desi
+red. See the documentation of grid_sample for details.
+  warnings.warn(
+ratio@0.6: 100%|█████████████████████| 3325/3325 [00:20<00:00, 158.72it/s]
+{'x_error_close': 0.12145836011606527, 'x_error_far': 1.3100329638882784, 'z_error_close': 0.03474919598650245, 'z_error_far': 1.28332
+09588199768, 'recall': 0.9208190525599069, 'precision': 0.1820648662500281, 'f1_score': 0.3040186601258416}
+{'x_error_close': 0.12145836011606527, 'x_error_far': 1.3100329638882784, 'z_error_close': 0.03474919598650245, 'z_error_far': 1.28332
+09588199768, 'recall': 0.9208190525599069, 'precision': 0.1820648662500281, 'f1_score': 0.3040186601258416}
+Predictions saved to /home/lijishuo/Anchor3DLane/output/once/anchor3dlane++_r50x2_official_val/test_predictions
+(anchor3dlane) lijishuo@VDIG222:~/Anchor3DLane$ tmux capture-pane -S -1000
+
