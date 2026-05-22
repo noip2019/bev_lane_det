@@ -151,6 +151,11 @@ def get_validation_model(model_wrapper):
     return unwrap_model(model_wrapper).model
 
 
+def set_requires_grad(module, requires_grad):
+    for param in module.parameters():
+        param.requires_grad = requires_grad
+
+
 def load_training_weights(wrapper, checkpoint_path, optimizer=None):
     if checkpoint_path is None:
         return 0
@@ -199,8 +204,13 @@ def train_epoch(
     epoch_start_time,
     train_start_time,
     start_epoch,
+    frozen_backbone=False,
 ):
     model.train()
+    if frozen_backbone:
+        base_model = get_validation_model(model)
+        if hasattr(base_model, "bb"):
+            base_model.bb.eval()
     total_iters = len(dataloader)
     iter_start_time = time.time()
     for batch_idx, batch in enumerate(dataloader):
@@ -309,6 +319,8 @@ def main():
     val_eval_mode = getattr(configs, "val_eval_mode", "once_benchmark")
     val_ratio_th = getattr(configs, "val_ratio_th", None)
     val_dist_th = getattr(configs, "val_dist_th", None)
+    freeze_backbone_epochs = int(getattr(configs, "freeze_backbone_epochs", 0) or 0)
+    find_unused_parameters = bool(getattr(configs, "find_unused_parameters", False)) or freeze_backbone_epochs > 0
     skip_val_eval = (
         args.skip_val_eval
         or getattr(configs, "val_skip_benchmark", False)
@@ -322,6 +334,7 @@ def main():
             model,
             device_ids=[local_rank] if device.type == "cuda" else None,
             output_device=local_rank if device.type == "cuda" else None,
+            find_unused_parameters=find_unused_parameters,
         )
     elif torch.cuda.is_available() and torch.cuda.device_count() > 1:
         model = torch.nn.DataParallel(model)
@@ -362,6 +375,15 @@ def main():
             if sampler is not None:
                 sampler.set_epoch(epoch)
 
+            base_model = get_validation_model(model)
+            if hasattr(base_model, "bb") and freeze_backbone_epochs > 0:
+                backbone_trainable = epoch >= freeze_backbone_epochs
+                set_requires_grad(base_model.bb, backbone_trainable)
+                if backbone_trainable:
+                    base_model.bb.train()
+                else:
+                    base_model.bb.eval()
+
             epoch_start_time = time.time()
             main_print(f"{'*' * 40} epoch {epoch}/{configs.epochs - 1} iters={iters_per_epoch}")
             train_epoch(
@@ -374,6 +396,7 @@ def main():
                 epoch_start_time,
                 train_start_time,
                 start_epoch,
+                frozen_backbone=epoch < freeze_backbone_epochs,
             )
             scheduler.step()
             main_print(

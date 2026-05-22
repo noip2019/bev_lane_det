@@ -155,7 +155,13 @@ def run_validation(
         getattr(configs, "val_prediction_root", os.path.join(configs.model_save_path, "predictions")),
         os.path.basename(gt_root.rstrip("/")),
     )
-    benchmark_cfg = benchmark_cfg or configs.benchmark_cfg_file
+    if not skip_eval:
+        benchmark_cfg = benchmark_cfg or getattr(configs, "benchmark_cfg_file", None)
+        if benchmark_cfg is None:
+            raise AttributeError(
+                "Validation benchmark config is missing. Set benchmark_cfg_file in the config "
+                "or pass benchmark_cfg explicitly."
+            )
     post_conf = getattr(configs, "post_conf", -0.7) if post_conf is None else post_conf
     post_emb_margin = getattr(configs, "post_emb_margin", 6.0) if post_emb_margin is None else post_emb_margin
     post_min_cluster_size = (

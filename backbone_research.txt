@@ -1,0 +1,66 @@
+按你现在这套代码和环境，我建议优先看这 4 个 backbone。基准是你当前的 ResNet34，官方参数量约 21.8M。如果要先下载一个，我建议先下
+  ResNet50 nuImages-pretrained；如果想更激进一点，再试 Swin-T nuImages-pretrained。
+
+  | Backbone | 参数量 | 预训练情况 | 适配难度 | 我建议 |
+  |---|---:|---|---|---|
+  | ResNet50 | 25.6M | 可拿 nuImages 预训练权重 | 低 | 第一优先 |
+  | Swin-T | 28.3M | 社区/BEV 系列常用 nuImages 预训练 | 中 | 第二优先 |
+  | InternImage-T | 30M | 如果能拿到 OpenLane-V2 / OpenLane topology 那类路域 checkpoint，潜力最好 | 高 | 第三优先 |
+  | ConvNeXt-Tiny | 28.6M | 通常容易拿到的是 ImageNet 权重，不一定有稳定的智驾预训练 | 中 | 兜底备选 |
+
+  我的判断：
+
+  - ResNet50 nuImages-pretrained
+      - 最稳。参数只比 ResNet34 多约 3.8M，而且还是 ResNet 家族，改你当前 single_camera_bev.py 最省事。
+      - SparseBEV 直接把 cascade_mask_rcnn_r50_fpn_coco-20e_20e_nuim_20201009_124951-40963960.pth 当预训练权重使用，GeoBEV 也明确提
+        供了 “nuImages 预训练 backbone”。
+      - 如果你想先做一版“基本稳涨点、工程风险最低”的配置，我最推荐这个。
+  - Swin-T nuImages-pretrained
+      - 参数只到 28.3M，增量也不大，但比 ResNet50 更现代。
+      - 在 CUDA-BEVFusion 的 nuScenes val 对比里，Swin-Tiny 略好于 ResNet50。
+      - 问题是你当前环境里 torchvision==0.11.2 没有现成 swin_t，后面我适配时要自己接 backbone 实现，工程量会比 R50 大一档。
+  - InternImage-T
+      - 如果你能拿到“智驾任务上训过”的 checkpoint，这个最值得赌。
+      - 官方 InternImage repo 明确有 autonomous_driving 分支，OpenLane-V2 也明确发布过 “InternImage baseline”；我据此推断，拿
+        OpenLane/OpenLane-V2 路域 checkpoint 来迁移到 ONCE 车道线，语义最接近。
+      - 但它的工程风险最高，因为通常要处理 DCNv3 依赖和特征抽取，不适合当第一枪。
+  - ConvNeXt-Tiny
+      - 这是“现代 CNN + 参数不过分增加”的好备选。
+      - 但我这次没查到一个我觉得足够稳的、官方可复用的“智驾场景预训练 backbone 来源”；更常见的是 ImageNet 权重。
+      - 所以它更适合做“如果拿不到靠谱 nuImages / OpenLane checkpoint，就先用它”。
+
+  不建议你优先下的：
+
+  - R101、Swin-B、V2-99 这类，参数和计算涨得明显，已经超出“不要增加太多”的范围。
+  - 纯 ImageNet 的大模型先不急，优先级低于 nuImages / OpenLane 这类路域预训练。
+
+  我建议你的下载顺序：
+
+  1. ResNet50 nuImages-pretrained
+  2. Swin-T nuImages-pretrained
+  3. 如果你能找到，OpenLane/OpenLane-V2 InternImage 基线 checkpoint
+  4. 下载不到上面两类时，再下 ConvNeXt-Tiny
+
+  你先把下载好的权重路径发我，我下一步会按你下载到的具体 checkpoint 来做适配。
+  如果你愿意，我也可以下一条直接帮你列成“具体该下载哪些文件名”的清单。
+
+  参考：
+
+  - 当前基线 ResNet34 参数：PyTorch resnet34 docs
+    https://docs.pytorch.org/vision/stable/models/generated/torchvision.models.resnet34.html
+  - ResNet50 参数：PyTorch resnet50 docs
+    https://docs.pytorch.org/vision/0.19/models/generated/torchvision.models.resnet50.html
+  - ConvNeXt-Tiny 参数：PyTorch convnext_tiny docs
+    https://docs.pytorch.org/vision/0.23/models/generated/torchvision.models.convnext_tiny.html
+  - Swin-T 参数：Torchvision source/meta
+    https://docs.pytorch.org/vision/0.13/_modules/torchvision/models/swin_transformer.html
+  - SparseBEV 预训练权重说明
+    https://github.com/mcg-nju/sparsebev
+  - GeoBEV 提供 nuImages 预训练 backbone
+    https://github.com/mengtan00/GeoBEV
+  - CUDA-BEVFusion 中 Swin-Tiny vs ResNet50 对比
+    https://github.com/NVIDIA-AI-IOT/Lidar_AI_Solution/blob/master/CUDA-BEVFusion/README.md
+  - InternImage 官方 repo
+    https://github.com/OpenGVLab/InternImage
+  - OpenLane-V2 发布 InternImage baseline
+    https://github.com/OpenDriveLab/OpenLane-V2

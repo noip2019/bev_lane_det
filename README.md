@@ -90,6 +90,51 @@ python tools/eval_once_with_ratio.py \
     --ratio-th 0.6
 ```
 
+### Anchor3DLane++ R50x2
+- A stronger ONCE config is available in [`tools/once_anchor3dlane_r50x2_config.py`](./tools/once_anchor3dlane_r50x2_config.py). It uses the Anchor3DLane++ `ResNet50` checkpoint, uses the new sequence split, and validates only with `val_offical` at `ratio_th=0.6`.
+- Train with:
+```
+bash train_once_anchor3dlane_r50x2.sh
+```
+- Test with:
+```
+bash test_once_anchor3dlane_r50x2.sh /path/to/checkpoint.pth
+```
+- The checkpoint path defaults to `/home/lijishuo/Anchor3DLane/ckpt/once_anchor3dlane++_r50x2(1).pth`, and the input resolution is raised to `720x960` for this config.
+- An original-split version is also available in [`tools/once_anchor3dlane_r50x2_origsplit_config.py`](./tools/once_anchor3dlane_r50x2_origsplit_config.py):
+```
+bash train_once_anchor3dlane_r50x2_origsplit.sh
+bash test_once_anchor3dlane_r50x2_origsplit.sh /path/to/checkpoint.pth
+```
+- To search inference post-processing hyperparameters on a specific checkpoint for the original split, use:
+```
+GPU_IDS=0 bash search_once_anchor3dlane_r50x2_origsplit.sh /path/to/checkpoint.pth
+```
+- This search keeps the evaluation thresholds fixed and only searches inference-side post-processing parameters such as `post_conf`, `post_emb_margin`, and `post_min_cluster_size`. You can override the search space with:
+```
+POST_CONF_VALUES=-0.9,-0.8,-0.7,-0.6 \
+POST_EMB_MARGIN_VALUES=4.0,5.0,6.0,7.0 \
+POST_MIN_CLUSTER_SIZE_VALUES=8,12,16,20 \
+GPU_IDS=0 bash search_once_anchor3dlane_r50x2_origsplit.sh /path/to/checkpoint.pth
+```
+
+### DINOv2 Small
+- A DINOv2 small ONCE config is available in [`tools/once_dinov2_small_config.py`](./tools/once_dinov2_small_config.py). It uses the local DINOv2 ViT-S/14 weights, uses the new sequence split, and validates only with `val_offical` at `ratio_th=0.6`.
+- Train with:
+```
+bash train_once_dinov2_small.sh
+```
+- Test with:
+```
+bash test_once_dinov2_small.sh /path/to/checkpoint.pth
+```
+- The checkpoint path defaults to `/home/lijishuo/dinov2/dinov2_vits14_reg4_pretrain.pth`. This config resizes images to `728x952` so the input stays divisible by the DINOv2 patch size `14`. The test script defaults to `GPU_IDS=0`.
+- An original-split version is also available in [`tools/once_dinov2_small_origsplit_config.py`](./tools/once_dinov2_small_origsplit_config.py):
+```
+bash train_once_dinov2_small_origsplit.sh
+bash test_once_dinov2_small_origsplit.sh /path/to/checkpoint.pth
+```
+
 ### Sequence-split training/testing
 - A new split-based setup is available without changing the original labels. It uses sequence ids extracted from:
   - `BEVLaneDetCopy_toPKU/data/split_train_with_height_pitch_by_sequence_9.json`

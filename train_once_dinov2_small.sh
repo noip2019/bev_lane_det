@@ -4,7 +4,7 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONDA_BASE="${CONDA_BASE:-/home/lijishuo/miniconda3}"
 CONDA_ENV="${CONDA_ENV:-bevlanedet}"
-CONFIG_PATH="${CONFIG_PATH:-${REPO_ROOT}/tools/once_sequence_split_config.py}"
+CONFIG_PATH="${CONFIG_PATH:-${REPO_ROOT}/tools/once_dinov2_small_config.py}"
 GPU_IDS="${GPU_IDS:-0,1,2,3}"
 NPROC_PER_NODE="${NPROC_PER_NODE:-4}"
 MONITOR_INTERVAL="${MONITOR_INTERVAL:-60}"
