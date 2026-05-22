@@ -9,12 +9,23 @@ CHECKPOINT_PATH="${1:-${REPO_ROOT}/work_dirs/once_3dlanes_anchor_r50x2_origsplit
 GPU_IDS="${GPU_IDS:-0}"
 RATIO_TH="${RATIO_TH:-0.6}"
 DIST_TH="${DIST_TH:-1.5}"
+POST_CONF="${POST_CONF:-}"
+POST_EMB_MARGIN="${POST_EMB_MARGIN:-}"
+POST_MIN_CLUSTER_SIZE="${POST_MIN_CLUSTER_SIZE:-}"
 MPLCONFIGDIR="${MPLCONFIGDIR:-/tmp/matplotlib-cache}"
 
 if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
     cat <<EOF
 Usage:
   bash test_once_anchor3dlane_r50x2_origsplit.sh [checkpoint_path]
+
+Optional environment variables:
+  GPU_IDS                CUDA_VISIBLE_DEVICES value for inference. Default: 0
+  RATIO_TH               Ratio threshold for val_offical. Default: 0.6
+  DIST_TH                Distance threshold for val_offical. Default: 1.5
+  POST_CONF              Override post_conf
+  POST_EMB_MARGIN        Override post_emb_margin
+  POST_MIN_CLUSTER_SIZE  Override post_min_cluster_size
 EOF
     exit 0
 fi
@@ -55,6 +66,18 @@ fi
 
 if [[ -n "${VAL_NUM_WORKERS:-}" ]]; then
     VAL_ARGS+=(--num-workers "${VAL_NUM_WORKERS}")
+fi
+
+if [[ -n "${POST_CONF}" ]]; then
+    VAL_ARGS+=(--post-conf "${POST_CONF}")
+fi
+
+if [[ -n "${POST_EMB_MARGIN}" ]]; then
+    VAL_ARGS+=(--post-emb-margin "${POST_EMB_MARGIN}")
+fi
+
+if [[ -n "${POST_MIN_CLUSTER_SIZE}" ]]; then
+    VAL_ARGS+=(--post-min-cluster-size "${POST_MIN_CLUSTER_SIZE}")
 fi
 
 if [[ -n "${IMAGE_ROOTS:-}" ]]; then

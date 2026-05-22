@@ -106,6 +106,16 @@ bash test_once_anchor3dlane_r50x2.sh /path/to/checkpoint.pth
 bash train_once_anchor3dlane_r50x2_origsplit.sh
 bash test_once_anchor3dlane_r50x2_origsplit.sh /path/to/checkpoint.pth
 ```
+- You can override the evaluation and inference post-processing parameters for the original-split test script with environment variables. For example:
+```
+GPU_IDS=0 \
+RATIO_TH=0.65 \
+DIST_TH=1.5 \
+POST_CONF=-0.6 \
+POST_EMB_MARGIN=7.0 \
+POST_MIN_CLUSTER_SIZE=20 \
+bash test_once_anchor3dlane_r50x2_origsplit.sh /path/to/checkpoint.pth
+```
 - To search inference post-processing hyperparameters on a specific checkpoint for the original split, use:
 ```
 GPU_IDS=0 bash search_once_anchor3dlane_r50x2_origsplit.sh /path/to/checkpoint.pth
@@ -189,3 +199,21 @@ Full-length (10 mins) video of OpenLane is here: [Video](./virtualization/ol.mp4
 
 ### Apollo 3D Lane Synthetic
 You can watch video of Apollo 3D Lane Synthetic in https://www.youtube.com/watch?v=WC36c4wO_QM
+
+
+### once best result
+(bevlanedet) lijishuo@VDIG222:~/bev_lane_det$ GPU_IDS=0   RATIO_TH=0.6   DIST_TH=1.5   POST_CONF=-0.7   POST_EMB_MARGIN=6   POST_MIN_C
+LUSTER_SIZE=6   bash test_once_anchor3dlane_r50x2_origsplit.sh work_dirs/once_3dlanes_anchor_r50x2_origsplit/ep013.pth
+Loaded backbone from /home/lijishuo/Anchor3DLane/ckpt/once_anchor3dlane++_r50x2(1).pth: matched=330 missing=0 unexpected=0
+0
+val_offical inference: 100%|████████████████████████████████████████████████████████████████████████| 832/832 [02:45<00:00,  5.04it/s]
+Predictions saved to /home/lijishuo/bev_lane_det/work_dirs/once_3dlanes_anchor_r50x2_origsplit/predictions/ep013
+=== val_offical ratio metric ===
+ratio@0.6: 100%|█████████████████████████████████████████████████████████████████████████████████| 3325/3325 [00:31<00:00, 104.31it/s]
+{'f1_score': 0.7933913050249616,
+ 'precision': 0.8044116254090304,
+ 'recall': 0.7826698303205317,
+ 'x_error_close': 0.11341254490964224,
+ 'x_error_far': 1.3439147215906706,
+ 'z_error_close': 0.041794601921901445,
+ 'z_error_far': 1.3262101076964874}
