@@ -108,6 +108,7 @@ bash test_once_anchor3dlane_r50x2.sh /path/to/checkpoint.pth
 - An original-split version is also available in [`tools/once_anchor3dlane_r50x2_origsplit_config.py`](./tools/once_anchor3dlane_r50x2_origsplit_config.py):
 ```
 bash train_once_anchor3dlane_r50x2_origsplit.sh
+bash train_once_anchor3dlane_r50x2_origsplit.sh /path/to/latest.pth
 bash test_once_anchor3dlane_r50x2_origsplit.sh /path/to/checkpoint.pth
 ```
 - You can override the evaluation and inference post-processing parameters for the original-split test script with environment variables. For example:
